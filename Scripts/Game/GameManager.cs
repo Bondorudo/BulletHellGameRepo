@@ -18,9 +18,13 @@ public class GameManager : MonoBehaviour
     private float score;
     private float scoreToShow;
 
+    public GameTypes gameType;
+
     public bool pauseGame;
     public bool isGameOver;
-    
+    public bool victory;
+
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         pauseGame = false;
         isGameOver = false;
+        victory = false;
         score = 0;
         scoreToShow = 0;
     }
@@ -91,6 +96,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         pauseGame = true;
         isGameOver = true;
+        victory = true;
         uiScript.Victory();
     }
 
@@ -104,27 +110,24 @@ public class GameManager : MonoBehaviour
         uiScript.GameOver();
     }
 
-    public void NextLevelButton()
+    public void UI_Continue()
     {
-        audioManager.ButtonPressAudio();
-        uiScript.NextLevelButton();
-    }
-
-    public void ContinueButton()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (gameType == GameTypes.FIRSTPERSON)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         audioManager.ButtonPressAudio();
         pauseGame = false;
         uiScript.ContinueButton();
     }
-    public void RestartButton()
+    public void UI_RestartLevel()
     {
         audioManager.ButtonPressAudio();
         uiScript.RestartButton();
     }
 
-    public void QuitToMenu()
+    public void UI_SaveAndQuit()
     {
         uiScript.QuitToMenu();
     }

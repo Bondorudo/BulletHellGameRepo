@@ -10,17 +10,14 @@ public class UI_Script : MonoBehaviour
 {
     // References to UI elements
     [Header("Menu Buttons")]
-    public Button nextLevelButton;
     public Button continueButton;
     public Button restartButton;
-    public Button quitButton;
-    public Button saveButton;
-    public Button loadButton;
+    public Button saveAndQuitButton;
 
     [Header("Menu Text")]
     public TextMeshProUGUI pauseText;
-    public TextMeshProUGUI loseText;
-    public TextMeshProUGUI winText;
+    public TextMeshProUGUI winCountDown;
+    public TextMeshProUGUI deathText;
 
     [Header("UI Text")]
     public TextMeshProUGUI enemiesKilledText;
@@ -31,66 +28,77 @@ public class UI_Script : MonoBehaviour
     private int nextLevelToLoad;
     private int sceneCount;
 
+    private TopFirstPersonGameManager gm;
+    private int countDownTime = 3;
+
 
     void Start()
     {
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        gm = GameObject.FindWithTag("GameManager").GetComponent<TopFirstPersonGameManager>();
         nextLevelToLoad = SceneManager.GetActiveScene().buildIndex + 1;
         sceneCount = SceneManager.sceneCountInBuildSettings;
+        StartCoroutine(CountDownToNextLevel());
+    }
+
+    IEnumerator CountDownToNextLevel()
+    {   
+        // TODO: fix countdown
+        while (1 == 1)
+        {
+            while (winCountDown.IsActive() && countDownTime >= 0)
+            {
+                winCountDown.text = countDownTime.ToString();
+                yield return new WaitForSeconds(1f);
+                countDownTime--;
+            }
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     public void PauseMenu()
     {
         pauseText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
-        quitButton.gameObject.SetActive(true);
-        saveButton.gameObject.SetActive(true);
-        loadButton.gameObject.SetActive(true);
-    }
-
-    public void GameOver()
-    {
-        loseText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-        saveButton.gameObject.SetActive(true);
-        loadButton.gameObject.SetActive(true);
+        saveAndQuitButton.gameObject.SetActive(true);
     }
 
     public void Victory()
     {
-        winText.gameObject.SetActive(true);
-        nextLevelButton.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-        quitButton.gameObject.SetActive(true);
+        winCountDown.gameObject.SetActive(true);
+
+        if (countDownTime <= 0)
+        {
+            if (nextLevelToLoad < sceneCount)
+            {
+                SceneManager.LoadScene(nextLevelToLoad);
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
+
+    public void GameOver()
+    {
+        deathText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        saveAndQuitButton.gameObject.SetActive(true);
+    }
+
     public void ContinueButton()
     {
         pauseText.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
-        quitButton.gameObject.SetActive(false);
-        saveButton.gameObject.SetActive(false);
-        loadButton.gameObject.SetActive(false);
+        saveAndQuitButton.gameObject.SetActive(false);
     }
 
     public void RestartButton()
     {
         audioManager.ButtonPressAudio();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void NextLevelButton()
-    {
-        audioManager.ButtonPressAudio();
-        if (nextLevelToLoad < sceneCount)
-        {
-            SceneManager.LoadScene(nextLevelToLoad);
-        }
-        else
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
     }
 
     public void QuitToMenu()

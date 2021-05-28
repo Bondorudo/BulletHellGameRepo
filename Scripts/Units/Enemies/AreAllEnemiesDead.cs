@@ -15,8 +15,6 @@ public class AreAllEnemiesDead : MonoBehaviour
         listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("BreakableWall"));
     }
 
-
-
     public void DestroyedCondition(GameObject gameObject)
     {
         if (listOfEnemies.Contains(gameObject))

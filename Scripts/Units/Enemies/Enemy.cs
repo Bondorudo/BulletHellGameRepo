@@ -86,7 +86,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerBullet")
         {
-            Debug.Log("DAMAGE");
             Destroy(other.gameObject);
             HurtEnemy(other.gameObject.GetComponent<PlayerBulletController>().damageToGive);
         }

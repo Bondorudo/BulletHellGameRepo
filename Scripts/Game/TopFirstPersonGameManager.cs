@@ -8,9 +8,13 @@ public class TopFirstPersonGameManager : MonoBehaviour
     private AreAllEnemiesDead areEnemiesDead;
     private GameManager gm;
 
+    private bool checkIfCanTakeDamage;
+    private bool victory;
+
     // Start is called before the first frame update
     void Start()
     {
+        checkIfCanTakeDamage = true;
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         levelHeart = GameObject.FindWithTag("WinCondition").GetComponent<LevelHeart>();
         areEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
@@ -21,12 +25,14 @@ public class TopFirstPersonGameManager : MonoBehaviour
     {
         CheckCanHeartTakeDamage();
         CheckVictory();
+        Victory();
     }
 
     public void CheckCanHeartTakeDamage()
     {
-        if (areEnemiesDead.AreTheyDestroyed())
+        if (areEnemiesDead.AreTheyDestroyed() && checkIfCanTakeDamage)
         {
+            checkIfCanTakeDamage = false;
             levelHeart.CanTakeDamage();
             levelHeart.SetVulnerableColor();
         }
@@ -34,10 +40,20 @@ public class TopFirstPersonGameManager : MonoBehaviour
 
     public void CheckVictory()
     {
-        int enemyHealth = levelHeart.CurrentHealth();
-        if (enemyHealth == 0)
+        int heartHealth = levelHeart.CurrentHealth();
+        if (heartHealth <= 0)
         {
+            victory = true;
             gm.Victory();
         }
+    }
+
+    public bool Victory()
+    {
+        if (victory)
+        {
+            return true;
+        }
+        else return false;
     }
 }
