@@ -4,40 +4,29 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Rigidbody rb;
     public ParticleSystem explosionParticle;
     [HideInInspector] public AudioManager audioManager;
     private AreAllEnemiesDead areAllEnemiesDead;
 
-    public int damage;
-
     public int maxHealth;
     private int currentHealth;
 
-    public float iFrameCounter;
-    private float iFrames = 0f;
-
-    public int moveSpeed;
-
+    public bool canTakeDamage;
     private bool isTouchingWall;
 
     private void Awake()
     {
+        canTakeDamage = true;
         isTouchingWall = false;
+        currentHealth = maxHealth;
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         areAllEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
 
-    private void Update()
-    {
-        if (iFrameCounter >= iFrames)
-        {
-            iFrameCounter -= Time.deltaTime;
-        }
-    }
-
     public void HurtEnemy(int damage)
     {
-        if (iFrameCounter <= iFrames)
+        if (canTakeDamage == true)
         {
             audioManager.EnemyDamageAudio();
             currentHealth -= damage;
@@ -62,12 +51,6 @@ public class Enemy : MonoBehaviour
 
     public int CurrentHealth()
     {
-        return currentHealth;
-    }
-
-    public int SetCurrentHealth()
-    {
-        currentHealth = maxHealth;
         return currentHealth;
     }
 
@@ -96,6 +79,16 @@ public class Enemy : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerBullet")
+        {
+            Debug.Log("DAMAGE");
+            Destroy(other.gameObject);
+            HurtEnemy(other.gameObject.GetComponent<PlayerBulletController>().damageToGive);
         }
     }
 }

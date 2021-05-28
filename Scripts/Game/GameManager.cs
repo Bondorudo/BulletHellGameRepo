@@ -10,6 +10,7 @@ public enum GameTypes { SIDESCROLL, TOPDOWN, FIRSTPERSON }
 
 public class GameManager : MonoBehaviour
 {
+    private Camera mainCamera;
     private GameObject player;
     private AudioManager audioManager;
     private UI_Script uiScript;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        mainCamera = Camera.main;
         player.SetActive(true);
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
             {
                 pauseGame = true;
                 uiScript.PauseMenu();
+                Cursor.lockState = CursorLockMode.None;
             }
         }
         if (pauseGame == true)
@@ -83,14 +86,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PauseMenu()
-    {
-        pauseGame = true;
-        uiScript.PauseMenu();
-    }
-
     public void Victory()
     {
+        Cursor.lockState = CursorLockMode.None;
         pauseGame = true;
         isGameOver = true;
         uiScript.Victory();
@@ -98,6 +96,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Cursor.lockState = CursorLockMode.None;
+        mainCamera.transform.parent = null;
         player.SetActive(false);
         isGameOver = true;
         pauseGame = true;
@@ -112,6 +112,8 @@ public class GameManager : MonoBehaviour
 
     public void ContinueButton()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
         audioManager.ButtonPressAudio();
         pauseGame = false;
         uiScript.ContinueButton();

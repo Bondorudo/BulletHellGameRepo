@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemySideScroll : Enemy
 {
-    private Rigidbody rb;
     private FireBullets fireBullets;
 
     [SerializeField] private float leftWall = 7;
+    [SerializeField] private int moveSpeed;
     private bool hasEnteredFight;
 
     // Start is called before the first frame update
@@ -15,7 +15,6 @@ public class EnemySideScroll : Enemy
     {
         rb = GetComponent<Rigidbody>();
         fireBullets = GetComponent<FireBullets>();
-        SetCurrentHealth();
         StartCoroutine(Shooting());
     }
 

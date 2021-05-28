@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 3908594156620732474}
   - component: {fileID: 3908594156620732477}
   - component: {fileID: 3908594156620732476}
+  - component: {fileID: 3908594156620732471}
+  - component: {fileID: 8146265167407274311}
+  - component: {fileID: 3908594156620732473}
   - component: {fileID: 3908594156620732479}
   - component: {fileID: 3908594156620732475}
-  - component: {fileID: 3908594156620732471}
-  - component: {fileID: 3908594156620732470}
-  - component: {fileID: 3908594156620732473}
-  - component: {fileID: 8146265167407274311}
   - component: {fileID: 2711418322492252529}
   m_Layer: 6
   m_Name: TurretEnemy
@@ -93,6 +92,64 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3908594156620732471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908594156620732478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15a628c5977ff843bb3b037f61553a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  explosionParticle: {fileID: 4316431200365163272}
+  audioManager: {fileID: 0}
+  damage: 1
+  maxHealth: 3
+  iFrameCounter: 0.1
+  canTakeDamage: 0
+  rotateClockwise: 0
+  rotationSpeed: 0
+  coolDownDefault: 0.5
+--- !u!114 &8146265167407274311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908594156620732478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebef9fd4e55ebd40bca518fdfd68b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCollider: {fileID: 3908594156620732479}
+  characterBlockerCollider: {fileID: 116473606850650298}
+--- !u!114 &3908594156620732473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908594156620732478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68817075b2fc104bb58c66fb59f15dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBulletNonBreakable: {fileID: 5753433531923786704, guid: 29f27136a115a5d4091fd180b9bad5cd,
+    type: 3}
+  enemyBulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
+    type: 3}
+  firePoint: {fileID: 3908594157013845837}
+  firePoint2: {fileID: 3908594157539187456}
+  damage: 1
+  bulletSpeed: 10
+  changeProjectile: 1
+  hasTwoFirePoints: 1
 --- !u!136 &3908594156620732479
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -123,74 +180,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &3908594156620732471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908594156620732478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15a628c5977ff843bb3b037f61553a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3908594156620732470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908594156620732478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8391022f09e668f459ca8fb5ccce6711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionParticle: {fileID: 4316431200365163272}
-  speed: 0
-  damping: 5
-  rotationSpeed: 200
-  coolDownDefault: 0.4
-  health: 3
-  canTakeDamage: 1
-  rotateClockwise: 1
---- !u!114 &3908594156620732473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908594156620732478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68817075b2fc104bb58c66fb59f15dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyBulletNonBreakable: {fileID: 5753433531923786704, guid: 29f27136a115a5d4091fd180b9bad5cd,
-    type: 3}
-  enemyBulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
-    type: 3}
-  firePoint: {fileID: 3908594157013845837}
-  firePoint2: {fileID: 3908594157539187456}
-  damage: 1
-  bulletSpeed: 10
-  changeProjectile: 1
-  hasTwoFirePoints: 1
---- !u!114 &8146265167407274311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908594156620732478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebef9fd4e55ebd40bca518fdfd68b4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterCollider: {fileID: 3908594156620732479}
-  characterBlockerCollider: {fileID: 116473606850650298}
 --- !u!82 &2711418322492252529
 AudioSource:
   m_ObjectHideFlags: 0

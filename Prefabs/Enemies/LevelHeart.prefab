@@ -73,11 +73,10 @@ GameObject:
   - component: {fileID: 3647729483030303587}
   - component: {fileID: 3647729483030303596}
   - component: {fileID: 3647729483030303597}
+  - component: {fileID: 3647729483030303592}
+  - component: {fileID: 3647729483030303598}
   - component: {fileID: 3647729483030303586}
   - component: {fileID: 3647729483030303599}
-  - component: {fileID: 3647729483030303592}
-  - component: {fileID: 3647729483030303593}
-  - component: {fileID: 3647729483030303598}
   - component: {fileID: 3647729483175983261}
   m_Layer: 6
   m_Name: LevelHeart
@@ -152,6 +151,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3647729483030303592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647729483030303594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cec2d1234a9ace4e80c25c118c0d4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  explosionParticle: {fileID: 3202812716048494619}
+  audioManager: {fileID: 0}
+  damage: 0
+  maxHealth: 3
+  iFrameCounter: 0.1
+  canTakeDamage: 0
+--- !u!114 &3647729483030303598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647729483030303594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebef9fd4e55ebd40bca518fdfd68b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCollider: {fileID: 3647729483030303586}
+  characterBlockerCollider: {fileID: 3647729482706398027}
 --- !u!136 &3647729483030303586
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -163,9 +195,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &3647729483030303599
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -182,52 +214,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &3647729483030303592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647729483030303594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cec2d1234a9ace4e80c25c118c0d4b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3647729483030303593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647729483030303594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8391022f09e668f459ca8fb5ccce6711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionParticle: {fileID: 3202812716048494619}
-  speed: 3
-  damping: 5
-  rotationSpeed: 10
-  coolDownDefault: 0.1
-  health: 3
-  canTakeDamage: 1
-  rotateClockwise: 1
---- !u!114 &3647729483030303598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647729483030303594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebef9fd4e55ebd40bca518fdfd68b4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterCollider: {fileID: 3647729483030303586}
-  characterBlockerCollider: {fileID: 3647729482706398027}
 --- !u!82 &3647729483175983261
 AudioSource:
   m_ObjectHideFlags: 0

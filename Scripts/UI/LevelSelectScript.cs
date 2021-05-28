@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectScript : MonoBehaviour
 {
-    public int levelID; 
+    public int levelID;
+    public string levelName;
     private AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
@@ -13,9 +14,15 @@ public class LevelSelectScript : MonoBehaviour
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
-    public void SelectLevel()
+    public void SelectLevelById()
     {
         audioManager.ButtonPressAudio();
         SceneManager.LoadScene(levelID);
+    }
+
+    public void SelectLevelByName()
+    {
+        audioManager.ButtonPressAudio();
+        SceneManager.LoadScene(levelName);
     }
 }

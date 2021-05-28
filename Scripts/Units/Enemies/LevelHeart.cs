@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelHeart : MonoBehaviour
+public class LevelHeart : Enemy
 {
-    private EnemyManager enemyManager;
-
     private Renderer rend;
 
     private Color storedColor;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        enemyManager = GetComponent<EnemyManager>();
+        rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         storedColor = rend.material.GetColor("_Color");
-        enemyManager.canTakeDamage = false;
+        canTakeDamage = false;
         SetShieldedColor();
     }
 
     public void CanTakeDamage()
     {
-        enemyManager.canTakeDamage = true;
+        canTakeDamage = true;
     }
 
     public void SetShieldedColor()

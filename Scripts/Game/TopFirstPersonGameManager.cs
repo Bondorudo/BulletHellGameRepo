@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TopFirstPersonGameManager : MonoBehaviour
 {
-    private EnemyManager heartManager;
     private LevelHeart levelHeart;
     private AreAllEnemiesDead areEnemiesDead;
     private GameManager gm;
@@ -13,7 +12,6 @@ public class TopFirstPersonGameManager : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        heartManager = GameObject.FindWithTag("WinCondition").GetComponent<EnemyManager>();
         levelHeart = GameObject.FindWithTag("WinCondition").GetComponent<LevelHeart>();
         areEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
@@ -36,7 +34,7 @@ public class TopFirstPersonGameManager : MonoBehaviour
 
     public void CheckVictory()
     {
-        int enemyHealth = heartManager.CurrentHealth();
+        int enemyHealth = levelHeart.CurrentHealth();
         if (enemyHealth == 0)
         {
             gm.Victory();

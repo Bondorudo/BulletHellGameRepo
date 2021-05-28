@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesToBeKilled: 15
-  gameType: 1
+  gameType: 0
 --- !u!114 &442910225
 MonoBehaviour:
   m_ObjectHideFlags: 0
