@@ -699,7 +699,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 442910221}
+      objectReference: {fileID: 86312423}
+    - target: {fileID: 2091225699870454350, guid: 1d97e73e73496704cb152e7003ada8b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UI_SaveAndQuit_Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091225699870454350, guid: 1d97e73e73496704cb152e7003ada8b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_Script, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2141880605680685465, guid: 1d97e73e73496704cb152e7003ada8b7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -819,12 +829,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 442910221}
+      objectReference: {fileID: 86312424}
+    - target: {fileID: 5735873448987926512, guid: 1d97e73e73496704cb152e7003ada8b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UI_RestartLevel_Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735873448987926512, guid: 1d97e73e73496704cb152e7003ada8b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_Script, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6054270905951604668, guid: 1d97e73e73496704cb152e7003ada8b7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 442910221}
+      objectReference: {fileID: 86312425}
+    - target: {fileID: 6054270905951604668, guid: 1d97e73e73496704cb152e7003ada8b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UI_Continue_Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054270905951604668, guid: 1d97e73e73496704cb152e7003ada8b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_Script, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d97e73e73496704cb152e7003ada8b7, type: 3}
 --- !u!114 &86312422 stripped
@@ -837,6 +867,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &86312423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6214171459467002782, guid: 1d97e73e73496704cb152e7003ada8b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 86312421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3779d9f9ec336f459f74ecfeebc0f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &86312424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8343083792683681325, guid: 1d97e73e73496704cb152e7003ada8b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 86312421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3779d9f9ec336f459f74ecfeebc0f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &86312425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7143525227710100332, guid: 1d97e73e73496704cb152e7003ada8b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 86312421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3779d9f9ec336f459f74ecfeebc0f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &93237131 stripped
@@ -1899,8 +1965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57efcdc85de225c47b6be2f8dd4a1c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameType: 0
   pauseGame: 0
   isGameOver: 0
+  victory: 0
 --- !u!114 &442910222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,6 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfEnemies: []
+  listOfHearts: []
   enemiesKilled: 0
 --- !u!114 &442910224
 MonoBehaviour:

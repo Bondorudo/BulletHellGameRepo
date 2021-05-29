@@ -227,11 +227,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinCountDown
       objectReference: {fileID: 0}
-    - target: {fileID: 5421617337474578187, guid: 846e812e63da5d34383019e639f28201,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 846e812e63da5d34383019e639f28201, type: 3}
 --- !u!224 &5855691727115243267 stripped
@@ -362,11 +357,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathText
       objectReference: {fileID: 0}
-    - target: {fileID: 5421617337474578187, guid: 846e812e63da5d34383019e639f28201,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 846e812e63da5d34383019e639f28201, type: 3}
 --- !u!224 &7360396315142366397 stripped
@@ -487,20 +477,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3914682593847422537, guid: 32e90225dd0012746afaf342b58352cd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UI_SaveAndQuit
-      objectReference: {fileID: 0}
     - target: {fileID: 3914682593847422543, guid: 32e90225dd0012746afaf342b58352cd,
         type: 3}
       propertyPath: m_Name
       value: 5_SaveAndQuit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3914682593847422543, guid: 32e90225dd0012746afaf342b58352cd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32e90225dd0012746afaf342b58352cd, type: 3}
@@ -632,11 +612,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseText
       objectReference: {fileID: 0}
-    - target: {fileID: 5421617337474578187, guid: 846e812e63da5d34383019e639f28201,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 846e812e63da5d34383019e639f28201, type: 3}
 --- !u!224 &2141880605680685465 stripped
@@ -652,11 +627,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3199468323603333112}
     m_Modifications:
-    - target: {fileID: 3660063631448949194, guid: 091aef98c1cf1c84e948fe4e2e291009,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UI_Continue
-      objectReference: {fileID: 0}
     - target: {fileID: 3660063631448949195, guid: 091aef98c1cf1c84e948fe4e2e291009,
         type: 3}
       propertyPath: m_Pivot.x
@@ -767,11 +737,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3_ContinueButton
       objectReference: {fileID: 0}
-    - target: {fileID: 3660063631448949196, guid: 091aef98c1cf1c84e948fe4e2e291009,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 091aef98c1cf1c84e948fe4e2e291009, type: 3}
 --- !u!224 &6054270905951604669 stripped
@@ -787,11 +752,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3199468323603333112}
     m_Modifications:
-    - target: {fileID: 2713411307481303408, guid: 2698f3fa36996f64889a1f25670c6918,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UI_RestartLevel
-      objectReference: {fileID: 0}
     - target: {fileID: 2713411307481303409, guid: 2698f3fa36996f64889a1f25670c6918,
         type: 3}
       propertyPath: m_Pivot.x
@@ -901,11 +861,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 4_RestartButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 2713411307481303414, guid: 2698f3fa36996f64889a1f25670c6918,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2698f3fa36996f64889a1f25670c6918, type: 3}

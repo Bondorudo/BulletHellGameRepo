@@ -1271,7 +1271,6 @@ MonoBehaviour:
   deathText: {fileID: 1738419313}
   enemiesKilledText: {fileID: 0}
   scoreText: {fileID: 0}
-  test: 1
 --- !u!114 &442910223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfEnemies: []
+  listOfHearts: []
   enemiesKilled: 0
 --- !u!114 &442910224
 MonoBehaviour:

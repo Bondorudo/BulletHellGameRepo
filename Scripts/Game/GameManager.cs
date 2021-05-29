@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 {
     private Camera mainCamera;
     private GameObject player;
-    private AudioManager audioManager;
     private UI_Script uiScript;
 
     private float score;
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         mainCamera = Camera.main;
         player.SetActive(true);
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         pauseGame = false;
         isGameOver = false;
@@ -62,12 +60,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if (!isGameOver)
+        if (!isGameOver || !victory)
         {
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
             {
                 pauseGame = true;
-                uiScript.PauseMenu();
+                uiScript.SetPauseUI();
                 Cursor.lockState = CursorLockMode.None;
             }
         }
@@ -95,9 +93,7 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         pauseGame = true;
-        isGameOver = true;
         victory = true;
-        uiScript.Victory();
     }
 
     public void GameOver()
@@ -107,28 +103,6 @@ public class GameManager : MonoBehaviour
         player.SetActive(false);
         isGameOver = true;
         pauseGame = true;
-        uiScript.GameOver();
-    }
-
-    public void UI_Continue()
-    {
-        if (gameType == GameTypes.FIRSTPERSON)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        audioManager.ButtonPressAudio();
-        pauseGame = false;
-        uiScript.ContinueButton();
-    }
-    public void UI_RestartLevel()
-    {
-        audioManager.ButtonPressAudio();
-        uiScript.RestartButton();
-    }
-
-    public void UI_SaveAndQuit()
-    {
-        uiScript.QuitToMenu();
+        uiScript.SetGameOverUI();
     }
 }

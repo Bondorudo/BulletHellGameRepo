@@ -1,36 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
 
 public class TopFirstPersonGameManager : MonoBehaviour
 {
     private LevelHeart levelHeart;
-    private AreAllEnemiesDead areEnemiesDead;
+    private AreAllEnemiesDead deadEnemies;
     private GameManager gm;
+    private UI_Script uiScript;
 
     private bool checkIfCanTakeDamage;
     private bool victory;
 
-    // Start is called before the first frame update
+    private int nextLevelToLoad;
+    private int sceneCount;
+
+    private float countDownTime;
+    private float showTimer;
+
+
     void Start()
     {
+        countDownTime = 3;
+        victory = false;
         checkIfCanTakeDamage = true;
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        levelHeart = GameObject.FindWithTag("WinCondition").GetComponent<LevelHeart>();
-        areEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
+        uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
+        levelHeart = GameObject.FindWithTag("LevelHeart").GetComponent<LevelHeart>();
+        deadEnemies = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
+        nextLevelToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        sceneCount = SceneManager.sceneCountInBuildSettings;
+        StartCoroutine(DecreaseTimer());
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckCanHeartTakeDamage();
-        CheckVictory();
-        Victory();
+        CheckIfHeartsAreDead();
     }
 
     public void CheckCanHeartTakeDamage()
     {
-        if (areEnemiesDead.AreTheyDestroyed() && checkIfCanTakeDamage)
+        if (deadEnemies.AreEnemiesDead() && checkIfCanTakeDamage)
         {
             checkIfCanTakeDamage = false;
             levelHeart.CanTakeDamage();
@@ -38,22 +51,48 @@ public class TopFirstPersonGameManager : MonoBehaviour
         }
     }
 
-    public void CheckVictory()
+    public void CheckIfHeartsAreDead()
     {
-        int heartHealth = levelHeart.CurrentHealth();
-        if (heartHealth <= 0)
+        if (deadEnemies.AreHeartsDead())
         {
             victory = true;
             gm.Victory();
         }
     }
 
-    public bool Victory()
+    // Decreases next level countdown
+    IEnumerator DecreaseTimer()
     {
-        if (victory)
+        while (true)
         {
-            return true;
+            while (victory && countDownTime >= 0)
+            {
+                showTimer = (int)Math.Round(countDownTime);
+                uiScript.SetVictoryUI((int)showTimer);
+                countDownTime--;
+                yield return new WaitForSecondsRealtime(1f);
+            }
+            LoadNextLevel();
+            yield return null;
         }
-        else return false;
+    }
+
+
+    // Loads the next scene by id in build settings
+    public void LoadNextLevel()
+    {
+        if (countDownTime <= 0)
+        {
+            if (nextLevelToLoad < sceneCount)
+            {
+                SceneManager.LoadScene(nextLevelToLoad);
+            }
+            // Bring to main menu if next level cant be loaded
+            // TODO: Add end credits here
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 }
