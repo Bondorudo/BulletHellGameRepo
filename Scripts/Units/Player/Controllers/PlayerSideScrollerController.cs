@@ -23,9 +23,9 @@ public class PlayerSideScrollerController : MonoBehaviour
         {
             transform.position = new Vector3(-12, transform.position.y, transform.position.z);
         }
-        else if (transform.position.x > -2)
+        else if (transform.position.x > 1)
         {
-            transform.position = new Vector3(-2, transform.position.y, transform.position.z);
+            transform.position = new Vector3(1, transform.position.y, transform.position.z);
         }
     }
 

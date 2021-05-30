@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System;
 
 public enum GameTypes { SIDESCROLL, TOPDOWN, FIRSTPERSON }
@@ -14,27 +11,34 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private UI_Script uiScript;
 
+    public GameTypes gameType;
+
     private float score;
     private float scoreToShow;
-
-    public GameTypes gameType;
+    private float countDownTime;
+    private float showTimer;
 
     public bool pauseGame;
     public bool isGameOver;
     public bool victory;
+
+    public string nextLevelToLoad = "Level_2";
+    public int levelToUnlock = 2;
 
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         mainCamera = Camera.main;
-        player.SetActive(true);
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
+        player.SetActive(true);
         pauseGame = false;
         isGameOver = false;
         victory = false;
         score = 0;
         scoreToShow = 0;
+        countDownTime = 3;
+        StartCoroutine(DecreaseTimer());
     }
 
     void Update()
@@ -104,5 +108,38 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         pauseGame = true;
         uiScript.SetGameOverUI();
+    }
+
+
+    // Decreases next level countdown
+    IEnumerator DecreaseTimer()
+    {
+        while (true)
+        {
+            while (victory && countDownTime >= 0)
+            {
+                showTimer = (int)Math.Round(countDownTime);
+                uiScript.SetVictoryUI((int)showTimer);
+                countDownTime--;
+                yield return new WaitForSecondsRealtime(0.8f);
+            }
+            LoadNextLevel();
+            yield return null;
+        }
+    }
+
+
+    // Loads the next scene by id in build settings
+    public void LoadNextLevel()
+    {
+        if (countDownTime <= 0)
+        {
+            int levelReached = PlayerPrefs.GetInt("levelReached");
+            if (levelReached <= levelToUnlock)
+            {
+                PlayerPrefs.SetInt("levelReached", levelToUnlock);
+            }
+            FindObjectOfType<SceneFader>().FadeTo(nextLevelToLoad);
+        }
     }
 }

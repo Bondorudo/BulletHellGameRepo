@@ -44,7 +44,7 @@ public class UI_Script : MonoBehaviour
         saveAndQuitButton.gameObject.SetActive(true);
     }
 
-    public void DisableUI()
+    public void SetDisableUI()
     {
         pauseText.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);

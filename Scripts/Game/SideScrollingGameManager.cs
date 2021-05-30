@@ -15,9 +15,7 @@ public class SideScrollingGameManager : MonoBehaviour
     private int enemiesKilled;
     public int enemiesToBeKilled = 20;
 
-
     private bool isBossDead;
-    private bool isWaveOver;
 
     public GameType gameType;
 

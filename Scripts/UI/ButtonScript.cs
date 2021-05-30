@@ -25,19 +25,19 @@ public class ButtonScript : MonoBehaviour
         }
         audioManager.ButtonPressAudio();
         gm.pauseGame = false;
-        uiScript.DisableUI();
+        uiScript.SetDisableUI();
     }
 
     public void UI_RestartLevel_Button()
     {
         audioManager.ButtonPressAudio();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        FindObjectOfType<SceneFader>().FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void UI_SaveAndQuit_Button()
     {
         // TODO: Save game
         audioManager.ButtonPressAudio();
-        SceneManager.LoadScene("MainMenu");
+        FindObjectOfType<SceneFader>().FadeTo("MainMenu");
     }
 }
