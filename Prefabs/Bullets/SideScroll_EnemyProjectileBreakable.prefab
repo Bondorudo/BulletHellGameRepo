@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4829330669069298886}
   - component: {fileID: 9132728487098673899}
   - component: {fileID: 4080113869641123755}
-  m_Layer: 8
-  m_Name: EnemyProjectileBreakable
+  m_Layer: 7
+  m_Name: SideScroll_EnemyProjectileBreakable
   m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,3 +129,4 @@ MonoBehaviour:
   speed: 5
   damageToGive: 0
   iFrameCounter: 0.1
+  gameType: 0

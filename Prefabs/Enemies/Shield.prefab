@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3647168295764496343}
   - component: {fileID: 3647168295764496341}
   - component: {fileID: 3647168295764496340}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: EnemyShieldBase
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3647168295764496342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.52}
-  m_LocalScale: {x: 0.94, y: 0.68, z: 0.71999997}
+  m_LocalPosition: {x: 0, y: 0, z: -0.05}
+  m_LocalScale: {x: 0.94, y: 0.68, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3647168296111997440}
   m_RootOrder: 1
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3647168296043334917}
   - component: {fileID: 3647168296043334939}
   - component: {fileID: 3647168296043334938}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: EnemyShield
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -108,8 +108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3647168296043334916}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 1, z: -0.13}
-  m_LocalScale: {x: 0.71999997, y: 0.68, z: 0.71999997}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2}
+  m_LocalScale: {x: 0.7, y: 0.68, z: 0.7}
   m_Children: []
   m_Father: {fileID: 3647168296111997440}
   m_RootOrder: 0
@@ -173,8 +173,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3647168296111997440}
-  - component: {fileID: 3647168296111997443}
-  m_Layer: 0
+  - component: {fileID: 7010298937963687732}
+  m_Layer: 10
   m_Name: Shield
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -190,15 +190,15 @@ Transform:
   m_GameObject: {fileID: 3647168296111997442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6, y: 0, z: 2.653}
-  m_LocalScale: {x: 1, y: 1, z: 0.40946}
+  m_LocalScale: {x: 1, y: 1, z: 0.7}
   m_Children:
   - {fileID: 3647168296043334917}
   - {fileID: 3647168295764496343}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3647168296111997443
-CapsuleCollider:
+--- !u!65 &7010298937963687732
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -207,7 +207,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.35
-  m_Direction: 0
-  m_Center: {x: 0, y: 1, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.6}
+  m_Center: {x: 0, y: 0.5, z: 0.04}

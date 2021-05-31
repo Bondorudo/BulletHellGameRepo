@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5753433531923786705}
   - component: {fileID: 2214377612646186495}
   - component: {fileID: 8860877633246644884}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: EnemyProjectileNonBreakable
   m_TagString: Purple
   m_Icon: {fileID: 0}

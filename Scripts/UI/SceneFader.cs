@@ -48,7 +48,6 @@ public class SceneFader : MonoBehaviour
             img.color = new Color(0f, 0f, 0f, a);
             yield return 0;
         }
-        Debug.Log(scene);
         SceneManager.LoadScene(scene);
     }
 }

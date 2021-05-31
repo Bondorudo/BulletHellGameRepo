@@ -85,4 +85,12 @@ public class PlayerHealthManager : MonoBehaviour
             HurtPlayer(wallDamage);
         }
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "DamageWall" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Shield")
+        {
+            HurtPlayer(wallDamage);
+        }
+    }
 }

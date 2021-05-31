@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
     public ParticleSystem explosionParticle;
     [HideInInspector] public AudioManager audioManager;
     private AreAllEnemiesDead areAllEnemiesDead;
@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             isTouchingWall = true;
         }
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             isTouchingWall = false;
         }

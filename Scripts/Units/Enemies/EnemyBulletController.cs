@@ -49,11 +49,11 @@ public class EnemyBulletController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // If Bullet hits walls destroy it
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy") || collision.gameObject.layer == LayerMask.NameToLayer("MovingWall"))
         {
             Destroy(gameObject);
         }
-        // If Purple collides with player destroy purple and damage player
+        // If Bullet collides with player destroy bullet and damage player
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
@@ -76,7 +76,6 @@ public class EnemyBulletController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     public void SetMoveDirection(Vector2 dir)
     {

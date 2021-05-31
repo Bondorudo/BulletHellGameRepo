@@ -2,36 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldEnemy : Enemy
+public class ShieldEnemy : MonoBehaviour
 {
-    private GameObject thePlayer;
+    private GameObject target;
+    private Rigidbody rb;
 
-    [SerializeField] private float speed;
+    public GameObject enemyBody;
+
+    [SerializeField] private float startSpeed;
+    private float speed;
     [SerializeField] private float damping = 5;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        speed = startSpeed;
         rb = GetComponent<Rigidbody>();
-        thePlayer = GameObject.FindWithTag("Player");
+        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotateTowardPlayer();
+        if (enemyBody == null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = (transform.forward * speed);
+        //MoveTowardPlayer();
     }
 
-    public void RotateTowardPlayer()
+    public void MoveTowardPlayer()
     {
-        //Enemy rotates to look at the player
-        var rotation = Quaternion.LookRotation(thePlayer.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+        Vector3 pos = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.fixedDeltaTime);
+        rb.MovePosition(pos);
+        transform.LookAt(target.transform);
     }
 }

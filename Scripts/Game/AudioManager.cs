@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     public void BulletCollisionAudio()
     {
-        audioSource.PlayOneShot(bulletCollision, .5f);
+        audioSource.PlayOneShot(bulletCollision, .3f);
     }
    
     public void PlayerProjectileAudio()
@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayerDamageAudio()
     {
-        audioSource.PlayOneShot(playerDamage, 0.4f);
+        audioSource.PlayOneShot(playerDamage, 0.8f);
     }
 
     public void EnemyProjectileAudio()
