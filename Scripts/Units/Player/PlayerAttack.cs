@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         // Get a reference to components
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 

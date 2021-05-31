@@ -44,7 +44,6 @@ public class TopFirstPersonGameManager : MonoBehaviour
     {
         if (deadEnemies.AreHeartsDead())
         {
-            gm.victory = true;
             gm.Victory();
         }
     }

@@ -755,7 +755,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
@@ -848,7 +848,7 @@ Transform:
   m_LocalScale: {x: 0.24205136, y: 0.24205136, z: 0.24205136}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &190962764
 PrefabInstance:
@@ -1394,6 +1394,7 @@ MonoBehaviour:
   deathText: {fileID: 742161003}
   continueButton: {fileID: 742161002}
   restartButton: {fileID: 742161001}
+  settingsButton: {fileID: 0}
   saveAndQuitButton: {fileID: 742161000}
   enemiesKilledText: {fileID: 0}
   scoreText: {fileID: 0}
@@ -1586,7 +1587,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 69, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
@@ -2142,7 +2143,7 @@ Transform:
   - {fileID: 2034856439}
   - {fileID: 2062122671}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &894727813
 PrefabInstance:

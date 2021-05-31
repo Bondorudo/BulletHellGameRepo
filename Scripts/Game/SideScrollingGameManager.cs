@@ -7,6 +7,8 @@ public enum GameType { STORY, ARCADE }
 
 public class SideScrollingGameManager : MonoBehaviour
 {
+    public GameType gameType;
+
     private UI_Script uiScript;
     private GameManager gm;
     private EnemySpawner enemySpawner;
@@ -17,7 +19,6 @@ public class SideScrollingGameManager : MonoBehaviour
 
     private bool isBossDead;
 
-    public GameType gameType;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class SideScrollingGameManager : MonoBehaviour
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         StartCoroutine(SpawnEnemies());
 
+        // Set up level and UI based on if scene is in story or arcade mode;
         if (gameType == GameType.STORY)
         {
             uiScript.enemiesKilledText.gameObject.SetActive(true);
@@ -42,42 +44,53 @@ public class SideScrollingGameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Story mode
         if (gameType == GameType.STORY)
         {
+            // If enemies killed is higher than win condition set it to win condition
             if (enemiesKilled > enemiesToBeKilled)
             {
                 enemiesKilled = enemiesToBeKilled;
             }
+            // Update UI
             uiScript.enemiesKilledText.text = "Enemies Killed " + enemiesKilled + "/" + enemiesToBeKilled;
             enemiesKilled = areAllEnemiesDead.enemiesKilled;
 
+            // Once all enemies in level are dead spawn a boss
             if (areAllEnemiesDead.listOfEnemies.Count == 0 && enemiesKilled >= enemiesToBeKilled)
             {
                 // TODO: SPAWN BOSS
                 isBossDead = true;
             }
 
+            // Win level after boss is dead
             if (isBossDead)
             {
                 gm.Victory();
             }
         }
+        // Arcade mode
         else if (gameType == GameType.ARCADE)
         {
+            // Increase player score
             gm.IncrementTimer();
         }
     }
 
+    // Spawns enemies everytime a wave has been killed until enemy limit has been reached
     IEnumerator SpawnEnemies()
     {
+        // Do this while enemies killed is less than win condition
         while (enemiesKilled < enemiesToBeKilled)
         {
+            // Spawn enemies when there are no enemies in the scene
             while (areAllEnemiesDead.listOfEnemies.Count <= 0)
             {
+                // Spawn a wave of enemies
                 enemySpawner.SpawnEnemyWave();
+                // Add all objects with SideScrollEnemy tag to list;
                 areAllEnemiesDead.listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("SideScrollEnemy"));
             }
             yield return new WaitForSeconds(1f);

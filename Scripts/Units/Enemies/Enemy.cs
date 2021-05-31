@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         canTakeDamage = true;
         isTouchingWall = false;
         currentHealth = maxHealth;
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         areAllEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
 

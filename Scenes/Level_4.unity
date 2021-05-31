@@ -293,7 +293,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
@@ -386,7 +386,7 @@ Transform:
   m_LocalScale: {x: 0.24205136, y: 0.24205136, z: 0.24205136}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &185513882 stripped
 Transform:
@@ -1091,6 +1091,7 @@ MonoBehaviour:
   deathText: {fileID: 0}
   continueButton: {fileID: 0}
   restartButton: {fileID: 0}
+  settingsButton: {fileID: 0}
   saveAndQuitButton: {fileID: 0}
   enemiesKilledText: {fileID: 0}
   scoreText: {fileID: 0}
@@ -1363,7 +1364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 69, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
@@ -1906,7 +1907,7 @@ Transform:
   - {fileID: 1808827109347718381}
   - {fileID: 1022531472}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &899302501
 PrefabInstance:

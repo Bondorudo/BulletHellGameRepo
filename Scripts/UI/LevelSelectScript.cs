@@ -11,7 +11,7 @@ public class LevelSelectScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
     }
 
     public void SelectLevelById()

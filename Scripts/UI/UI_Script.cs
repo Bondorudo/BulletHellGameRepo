@@ -17,6 +17,7 @@ public class UI_Script : MonoBehaviour
     [Header("Menu Buttons")]
     public Button continueButton;
     public Button restartButton;
+    public Button settingsButton;
     public Button saveAndQuitButton;
 
     [Header("UI Text")]
@@ -24,19 +25,23 @@ public class UI_Script : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
 
+    // Activate all pause menu UI elements
     public void SetPauseUI()
     {
         pauseText.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
+        settingsButton.gameObject.SetActive(true);
         saveAndQuitButton.gameObject.SetActive(true);
     }
 
+    // Activate all victory UI elements
     public void SetVictoryUI(int count)
     {
         winCountDown.gameObject.SetActive(true);
         winCountDown.text = count.ToString("0");
     }
 
+    // Activate all GameOver UI elements
     public void SetGameOverUI()
     {
         deathText.gameObject.SetActive(true);
@@ -44,11 +49,13 @@ public class UI_Script : MonoBehaviour
         saveAndQuitButton.gameObject.SetActive(true);
     }
 
+    // Disable all UI elements
     public void SetDisableUI()
     {
         pauseText.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        settingsButton.gameObject.SetActive(false);
         saveAndQuitButton.gameObject.SetActive(false);
     }
 }

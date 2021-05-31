@@ -23,7 +23,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         // Get a reference to components, set currentHealth to startingHealth, set player hp indicators active.
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         rend = GetComponentInChildren<Renderer>();
         storedColor = rend.material.GetColor("_Color");
         currentHealth = startingHealth;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource audioSource;
-    //public AudioClip levelMusic;
-    //[SerializeField] private float musicVolume = 0.3f;
+    [Header("Audio Source")]
+    public AudioSource audioSource;
+    [Header("SFX")]
     public AudioClip uiButtonSound;
     public AudioClip playerProjectile;
     public AudioClip playerDamage;
@@ -16,14 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyDeath;
     public AudioClip enemyProjectile;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-        //audioSource.PlayOneShot(levelMusic, musicVolume);
-        //audioSource.loop = true;
-    }
-
+    // Public functions that can be called to play some audio
 
     public void ButtonPressAudio()
     {
@@ -32,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     public void BulletCollisionAudio()
     {
-        audioSource.PlayOneShot(bulletCollision, 1f);
+        audioSource.PlayOneShot(bulletCollision, .5f);
     }
    
     public void PlayerProjectileAudio()

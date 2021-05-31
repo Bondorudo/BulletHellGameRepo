@@ -12,7 +12,7 @@ public class ButtonScript : MonoBehaviour
     void Start()
     {
         // Setup
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
     }
@@ -38,6 +38,11 @@ public class ButtonScript : MonoBehaviour
         audioManager.ButtonPressAudio();
         // Find scene fader and fade to active scene to restart.
         FindObjectOfType<SceneFader>().FadeTo(SceneManager.GetActiveScene().name);
+    }
+    public void UI_Settings_Button()
+    {
+        // TODO: Game Settings scene
+        audioManager.ButtonPressAudio();
     }
 
     public void UI_SaveAndQuit_Button()

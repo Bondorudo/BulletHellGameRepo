@@ -25,7 +25,7 @@ public class EnemyBulletController : MonoBehaviour
 
     private void Start()
     {
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
     }
 
     void Update()
