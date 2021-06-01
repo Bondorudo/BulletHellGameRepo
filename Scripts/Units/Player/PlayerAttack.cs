@@ -42,9 +42,11 @@ public class PlayerAttack : MonoBehaviour
         if (bulletCooldown > bulletCooldownDefault)
         {
             // Create a player bullet as a playerBulletController then set bullet attributes, play audio and reset cooldown
+            Vector3 shootDir = (firePoint.position - this.gameObject.transform.position).normalized;
             PlayerBulletController bullet = Instantiate(playerBullet, firePoint.position, firePoint.rotation).GetComponent<PlayerBulletController>();
-            bullet.damageToGive = bulletDamage;
+            bullet.SetUp(shootDir);
             bullet.bulletSpeed = bulletSpeed;
+            bullet.damageToGive = bulletDamage;
             audioManager.PlayerProjectileAudio();
             bulletCooldown = 0;
         }

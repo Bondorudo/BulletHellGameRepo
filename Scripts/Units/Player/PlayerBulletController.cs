@@ -8,12 +8,18 @@ public class PlayerBulletController : MonoBehaviour
     public float bulletSpeed;
     public int damageToGive;
 
+    Vector3 shootDir;
+
+    public void SetUp(Vector3 shootDir)
+    {
+        this.shootDir = shootDir;
+    }
 
     // Update is called once per frame
     void Update()
     {
         //control projectile movement
-        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+        transform.position += shootDir * bulletSpeed * Time.deltaTime;
         Destroy(gameObject, destroyBullet);
     }
 
