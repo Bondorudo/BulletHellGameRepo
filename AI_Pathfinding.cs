@@ -5,30 +5,27 @@ using UnityEngine.AI;
 
 public class AI_Pathfinding : MonoBehaviour
 {
+    [Header("Transform")]
     public Transform player;
     NavMeshAgent nav;
 
     // AI Sight
+    [Header("Line Of Sight")]
     public bool playerIsInLOS = false;
     public float fieldOfViewAngle = 160f;
     public float losRadius = 45f;
 
     // AI Memory
+    [Header("Memory")]
     private bool aiMemorizePlayer = false;
 
-    // Patrolling randomly between waypoints
-    public Transform[] moveSpots;
-    private int randomSpot;
-
-    // Wait Time at waypoint for patrolling
-    private float waitTime;
-    public float startWaitTime = 1f;
-    
     // Start chasing
+    [Header("Start Chasing")]
     public float chaseRadius = 20f;
     public float rotationSpeed = 20f;
 
     // Stop chasing
+    [Header("Stop Chasing")]
     public float distToPlayer = 5.0f;
     private Transform stopPos;
 
@@ -37,13 +34,6 @@ public class AI_Pathfinding : MonoBehaviour
     {
         nav = GetComponent<NavMeshAgent>();
         nav.enabled = true;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        waitTime = startWaitTime;
-        randomSpot = Random.Range(0, moveSpots.Length);
     }
 
     // Update is called once per frame
@@ -60,11 +50,7 @@ public class AI_Pathfinding : MonoBehaviour
 
         if (nav.isActiveAndEnabled)
         {
-            if (playerIsInLOS == false && aiMemorizePlayer == false)
-            {
-                Patrol();
-            }
-            else if (playerIsInLOS == true)
+            if (playerIsInLOS == true)
             {
                 aiMemorizePlayer = true;
 
@@ -74,6 +60,7 @@ public class AI_Pathfinding : MonoBehaviour
             else if (aiMemorizePlayer == true && playerIsInLOS == false)
             {
                 ChasePlayer();
+                FacePlayer();
             }
         }
     }
@@ -97,21 +84,6 @@ public class AI_Pathfinding : MonoBehaviour
                 }
                 else playerIsInLOS = false;
             }
-        }
-    }
-
-    private void Patrol()
-    {
-        nav.SetDestination(moveSpots[randomSpot].position);
-
-        if (Vector3.Distance(transform.position, moveSpots[randomSpot].position) < 2.0f)
-        {
-            if (waitTime <= 0)
-            {
-                randomSpot = Random.Range(0, moveSpots.Length);
-                waitTime = startWaitTime;
-            }
-            else waitTime -= Time.deltaTime;
         }
     }
 

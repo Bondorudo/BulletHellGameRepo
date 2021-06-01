@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [HideInInspector] public Rigidbody rb;
+    [Header("Particles")]
     public ParticleSystem explosionParticle;
+    [HideInInspector] public Rigidbody rb;
     [HideInInspector] public AudioManager audioManager;
     private AreAllEnemiesDead areAllEnemiesDead;
 
+    [Header("Health")]
     public int maxHealth;
     private int currentHealth;
 
-    public bool canTakeDamage;
+    [Header("Can Take Damage")]
+    [HideInInspector]public bool canTakeDamage;
     private bool isTouchingWall;
 
     private void Awake()
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
     {
         if (canTakeDamage == true)
         {
+            Debug.Log("Took damage " + currentHealth);
             audioManager.EnemyDamageAudio();
             currentHealth -= damage;
             EnemyDeath();
@@ -84,6 +88,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Got Hit");
         if (other.gameObject.tag == "PlayerBullet")
         {
             Destroy(other.gameObject);

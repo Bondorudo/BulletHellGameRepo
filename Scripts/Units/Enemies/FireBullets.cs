@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BulletType { PURPLE, ORANGE, ALTERNATE }
+public enum BulletType { NONBREAKABLE, BREAKABLE, ALTERNATE }
 
 public class FireBullets : MonoBehaviour
 {
@@ -65,12 +65,12 @@ public class FireBullets : MonoBehaviour
 
     public GameObject GetBullet()
     {
-        if (bulletType == BulletType.PURPLE)
+        if (bulletType == BulletType.NONBREAKABLE)
         {
             // Instantiate purple
             bul = Instantiate(BulletNonBreakable, firePoint);
         }
-        else if (bulletType == BulletType.ORANGE)
+        else if (bulletType == BulletType.BREAKABLE)
         {
             // Instantiate orange
             bul = Instantiate(BulletBreakable, firePoint);

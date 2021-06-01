@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform firePoint;
 
-    [Header("Bullet Attribbutes")]
+    [Header("Bullet Attributes")]
     [SerializeField] private float bulletCooldownDefault = 0.1f;
     private float bulletCooldown = 0;
     [SerializeField] private float bulletSpeed = 25;

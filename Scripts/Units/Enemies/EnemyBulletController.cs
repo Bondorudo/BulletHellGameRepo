@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class EnemyBulletController : MonoBehaviour
 {
     public float speed;
@@ -15,8 +13,10 @@ public class EnemyBulletController : MonoBehaviour
     private AudioManager audioManager;
 
     private Vector2 moveDirection;
+    [SerializeField] private Vector3 shootDir;
 
-    public GameTypes gameType;
+    private GameManager gm;
+    private GameTypes gameType;
 
     private void OnEnable()
     {
@@ -25,6 +25,8 @@ public class EnemyBulletController : MonoBehaviour
 
     private void Start()
     {
+        gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        gameType = gm.gameType;
         audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
     }
 
@@ -36,7 +38,7 @@ public class EnemyBulletController : MonoBehaviour
         }
         else if (gameType == GameTypes.TOPDOWN || gameType == GameTypes.FIRSTPERSON)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.position += shootDir * speed * Time.deltaTime;
         }
 
         if (iFrameCounter >= iFrames)
@@ -80,6 +82,11 @@ public class EnemyBulletController : MonoBehaviour
     public void SetMoveDirection(Vector2 dir)
     {
         moveDirection = dir;
+    }
+
+    public void SetUp(Vector3 shootDir)
+    {
+        this.shootDir = shootDir;
     }
 
     private void DisableBullet()

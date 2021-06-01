@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4829330669069298887}
   - component: {fileID: 4829330669069298886}
   - component: {fileID: 9132728487098673899}
-  - component: {fileID: 4080113869641123755}
+  - component: {fileID: 2207943365669099220}
   m_Layer: 7
   m_Name: EnemyProjectileBreakable
   m_TagString: Orange
@@ -114,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4080113869641123755
+--- !u!114 &2207943365669099220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6808558be188f4d8f85adb2dd7ac54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0
   damageToGive: 0
-  iFrameCounter: 0.1
-  gameType: 1
+  iFrameCounter: 0
+  moveDirection: {x: 0, y: 0}
+  gameType: 0
