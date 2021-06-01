@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    // Gets random enemy from list of enemeis
     public GameObject RandomEnemy()
     {
         enemyIndex = Random.Range(0, 8);

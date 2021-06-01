@@ -12,6 +12,7 @@ public class TurretEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
+        // Rotate gun
         if (rotateClockwise == true)
         {
             transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);

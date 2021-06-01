@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
     public void EnemyProjectileAudio()
     {
-        audioSource.PlayOneShot(enemyProjectile, 0.2f);
+        audioSource.PlayOneShot(enemyProjectile, 0.1f);
     }
 
     public void EnemyDeathAudio()

@@ -19,11 +19,13 @@ public class LevelHeart : Enemy
         SetShieldedColor();
     }
 
+    // Set can take damage to true
     public void CanTakeDamage()
     {
         canTakeDamage = true;
     }
 
+    // Sets color to indicate if heart can take damage
     public void SetShieldedColor()
     {
         rend.material.SetColor("_Color", Color.gray);
