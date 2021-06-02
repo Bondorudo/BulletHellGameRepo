@@ -23,6 +23,7 @@ public class UI_Script : MonoBehaviour
     [Header("UI Text")]
     public TextMeshProUGUI enemiesKilledText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highScoreText;
 
 
     // Activate all pause menu UI elements

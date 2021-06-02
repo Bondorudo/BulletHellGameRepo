@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
-    private AudioManager audioManager;
     private GameManager gm;
     private UI_Script uiScript;
+    public GameObject settings;
+    public GameObject pauseMenu;
 
     void Start()
     {
         // Setup
-        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
     }
@@ -26,7 +26,7 @@ public class ButtonScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
         // play button press audio
-        audioManager.ButtonPressAudio();
+        AudioManager.instance.PlaySound("UI_Buttons");
         gm.pauseGame = false;
         // Call disable UI function
         uiScript.SetDisableUI();
@@ -35,21 +35,22 @@ public class ButtonScript : MonoBehaviour
     public void UI_RestartLevel_Button()
     {
         // play button press audio
-        audioManager.ButtonPressAudio();
+        AudioManager.instance.PlaySound("UI_Buttons");
         // Find scene fader and fade to active scene to restart.
         FindObjectOfType<SceneFader>().FadeTo(SceneManager.GetActiveScene().name);
     }
     public void UI_Settings_Button()
     {
-        // TODO: Game Settings scene
-        audioManager.ButtonPressAudio();
+        AudioManager.instance.PlaySound("UI_Buttons");
+        pauseMenu.SetActive(false);
+        settings.SetActive(true);
     }
 
     public void UI_SaveAndQuit_Button()
     {
         // TODO: Save game
         // play button press audio
-        audioManager.ButtonPressAudio();
+        AudioManager.instance.PlaySound("UI_Buttons");
         // Find scene fader and fade to main menu
         FindObjectOfType<SceneFader>().FadeTo("MainMenu");
     }

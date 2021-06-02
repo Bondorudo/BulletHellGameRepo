@@ -7,22 +7,16 @@ public class LevelSelectScript : MonoBehaviour
 {
     public int levelID;
     public string levelName;
-    private AudioManager audioManager;
-    // Start is called before the first frame update
-    void Start()
-    {
-        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
-    }
 
     public void SelectLevelById()
     {
-        audioManager.ButtonPressAudio();
+        AudioManager.instance.PlaySound("UI_Buttons");
         SceneManager.LoadScene(levelID);
     }
 
     public void SelectLevelByName()
     {
-        audioManager.ButtonPressAudio();
+        AudioManager.instance.PlaySound("UI_Buttons");
         SceneManager.LoadScene(levelName);
     }
 }

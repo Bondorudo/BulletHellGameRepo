@@ -6,7 +6,6 @@ public class PlayerHealthManager : MonoBehaviour
 {
     private Renderer rend;
     private GameManager gameManager;
-    private AudioManager audioManager;
     [SerializeField] private ParticleSystem explosionParticle;
 
     public float flashLength;
@@ -23,7 +22,6 @@ public class PlayerHealthManager : MonoBehaviour
     {
         // Get a reference to components, set currentHealth to startingHealth, set player hp indicators active.
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         rend = GetComponentInChildren<Renderer>();
         storedColor = rend.material.GetColor("_Color");
         currentHealth = startingHealth;
@@ -36,7 +34,7 @@ public class PlayerHealthManager : MonoBehaviour
         // Game over happens if player health is equal to 0
         if (currentHealth <= 0)
         {
-            audioManager.PlayerDeathAudio();
+            AudioManager.instance.PlaySound("PlayerDeath");
             rend.material.SetColor("_Color", storedColor);
             explosionParticle.transform.parent = null;
             if (!explosionParticle.isPlaying) explosionParticle.Play();
@@ -70,7 +68,7 @@ public class PlayerHealthManager : MonoBehaviour
         // If iFrame counter is less than zero player can take damage again.
         if (flashCounter <= 0)
         {
-            audioManager.PlayerDamageAudio();
+            AudioManager.instance.PlaySound("PlayerDamage");
             currentHealth -= damageAmount;
             rend.material.SetColor("_Color", Color.red);
             flashCounter = flashLength;

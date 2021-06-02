@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     [Header("Particles")]
     public ParticleSystem explosionParticle;
     [HideInInspector] public Rigidbody rb;
-    [HideInInspector] public AudioManager audioManager;
     private AreAllEnemiesDead areAllEnemiesDead;
 
     [Header("Health")]
@@ -23,7 +22,6 @@ public class Enemy : MonoBehaviour
         canTakeDamage = true;
         isTouchingWall = false;
         currentHealth = maxHealth;
-        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         areAllEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
 
@@ -31,8 +29,7 @@ public class Enemy : MonoBehaviour
     {
         if (canTakeDamage == true)
         {
-            Debug.Log("Took damage " + currentHealth);
-            audioManager.EnemyDamageAudio();
+            AudioManager.instance.PlaySound("EnemyDamage");
             currentHealth -= damage;
             EnemyDeath();
         }
@@ -44,7 +41,7 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             areAllEnemiesDead.DestroyedCondition(gameObject);
-            audioManager.EnemyDeathAudio();
+            AudioManager.instance.PlaySound("EnemyDeath");
             explosionParticle.transform.parent = null;
             explosionParticle.Play();
             Destroy(gameObject);
@@ -88,7 +85,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Got Hit");
         if (other.gameObject.tag == "PlayerBullet")
         {
             Destroy(other.gameObject);

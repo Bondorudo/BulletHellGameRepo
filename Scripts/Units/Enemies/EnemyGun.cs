@@ -10,8 +10,6 @@ public class EnemyGun : MonoBehaviour
     private float[][] firePointTrianglePos = new float[3][];
     private int[] firePointTriangleRot = new int[3] { 180, -58, 58 };
 
-    private AudioManager am;
-
     [Header("FIREPOINTS")]
     [Range(1, 4)]
     [SerializeField] private int firePointCount;
@@ -32,7 +30,6 @@ public class EnemyGun : MonoBehaviour
 
     private void Start()
     {
-        am = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         // Initialize firePoint positions with arrays depending on how many firepoints should exist
         firePointPos[0] = new float[] { 0f, 0f, 1.5f };
         firePointPos[1] = new float[] { 0f, 0f, -1.5f };
@@ -53,7 +50,7 @@ public class EnemyGun : MonoBehaviour
         while (this.isActiveAndEnabled)
         {
             CreateFirePoints();
-            am.EnemyProjectileAudio();
+            AudioManager.instance.PlaySound("EnemyBullet");
             yield return new WaitForSeconds(fireRate);
         }
     }

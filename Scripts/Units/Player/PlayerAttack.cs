@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private AudioManager audioManager;
     private GameManager gm;
 
     [Header("Game Objects")]
@@ -21,7 +20,6 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         // Get a reference to components
-        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
@@ -47,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
             bullet.SetUp(shootDir);
             bullet.bulletSpeed = bulletSpeed;
             bullet.damageToGive = bulletDamage;
-            audioManager.PlayerProjectileAudio();
+            AudioManager.instance.PlaySound("PlayerBullet");
             bulletCooldown = 0;
         }
     }

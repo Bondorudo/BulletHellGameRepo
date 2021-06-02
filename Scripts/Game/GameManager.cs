@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public GameTypes gameType;
 
-    private float score;
+    public float score;
     private float scoreToShow;
     private float countDownTime;
     private float showTimer;
@@ -44,22 +44,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         PauseGame();
-    }
-
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(player.GetComponent<CurrentPlayerData>());
-    }
-
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-        player.GetComponent<PlayerHealthManager>().currentHealth = data.health;
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-        player.transform.position = position;
     }
 
     public void PauseGame()

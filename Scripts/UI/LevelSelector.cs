@@ -50,7 +50,7 @@ public class LevelSelector : MonoBehaviour
     {
         // Find audio manager and play button press audio
         // Find scene fader and fade to scene with parameter's name
-        FindObjectOfType<AudioManager>().ButtonPressAudio();
+        AudioManager.instance.PlaySound("UI_Button");
         FindObjectOfType<SceneFader>().FadeTo(levelToLoad);
     }
 }

@@ -7,13 +7,21 @@ public class MouseLook : MonoBehaviour
     private GameManager gm;
     public Transform player;
 
-    public float mouseSensitivity;
+    public float mouseSensitivity { get; private set; }
 
     private float y = 0;
+
+    public static MouseLook instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        mouseSensitivity = 0;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.lockState = CursorLockMode.Locked;
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
@@ -28,5 +36,13 @@ public class MouseLook : MonoBehaviour
 
             player.transform.localRotation = Quaternion.Euler(0, y, 0);
         }
+    }
+
+    public void SetMouseSensitivity(float value)
+    {
+        mouseSensitivity *= value * 100;
+
+        PlayerPrefs.SetFloat("mouseSensitivity", mouseSensitivity);
+        PlayerPrefs.Save();
     }
 }

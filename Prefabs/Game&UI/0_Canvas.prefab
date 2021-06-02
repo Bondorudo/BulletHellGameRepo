@@ -898,6 +898,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3199468323603333112}
     m_Modifications:
+    - target: {fileID: 2542966473617295167, guid: 8d397935ed19b3f46ac9d0c89c7f9732,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 3199468323603333092}
     - target: {fileID: 6359526466850108746, guid: 8d397935ed19b3f46ac9d0c89c7f9732,
         type: 3}
       propertyPath: m_Pivot.x

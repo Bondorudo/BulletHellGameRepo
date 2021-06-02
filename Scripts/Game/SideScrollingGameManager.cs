@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public enum GameType { STORY, ARCADE }
 
@@ -76,6 +77,17 @@ public class SideScrollingGameManager : MonoBehaviour
         {
             // Increase player score
             gm.IncrementTimer();
+            if (gm.isGameOver)
+            {
+                uiScript.highScoreText.gameObject.SetActive(true);
+                float highScore = PlayerPrefs.GetFloat("highScore");
+                if (highScore <= gm.score)
+                {
+                    PlayerPrefs.SetFloat("highScore", gm.score);
+                }
+                float scoreToShow = (float)Math.Round(highScore, 2);
+                uiScript.highScoreText.text = "High Score " + scoreToShow;
+            }
         }
     }
 

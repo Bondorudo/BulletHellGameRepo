@@ -4,57 +4,85 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("Audio Source")]
-    public AudioSource audioSource;
-    [Header("SFX")]
-    public AudioClip uiButtonSound;
-    public AudioClip playerProjectile;
-    public AudioClip playerDamage;
-    public AudioClip playerDeath;
-    public AudioClip bulletCollision;
-    public AudioClip enemyDamage;
-    public AudioClip enemyDeath;
-    public AudioClip enemyProjectile;
+    public enum AudioChannel { MASTER, MUSIC, SFX };
 
-    // Public functions that can be called to play some audio
+    public float masterVolumePercent { get; private set; }
+    public float musicVolumePercent { get; private set; }
+    public float sfxVolumePercent { get; private set; }
 
-    public void ButtonPressAudio()
+    int activeMusicSourceIndex;
+
+    AudioSource sfx2DSource;
+    AudioSource musicSource;
+
+    public static AudioManager instance;
+
+    SoundLibrary library;
+
+    private void Awake()
     {
-        audioSource.PlayOneShot(uiButtonSound, 0.5f);
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            library = GetComponent<SoundLibrary>();
+
+            GameObject newMusicSource = new GameObject("Music Source");
+            musicSource = newMusicSource.AddComponent<AudioSource>();
+            newMusicSource.transform.parent = transform;
+
+            GameObject newSfx2DSource = new GameObject("2DsfxSource");
+            sfx2DSource = newSfx2DSource.AddComponent<AudioSource>();
+            newSfx2DSource.transform.parent = transform;
+
+            masterVolumePercent = PlayerPrefs.GetFloat("masterVolume", 1f);
+            musicVolumePercent = PlayerPrefs.GetFloat("musixVolume", 1f);
+            sfxVolumePercent = PlayerPrefs.GetFloat("sfxVolume", 1f);
+        }
     }
 
-    public void BulletCollisionAudio()
+    public void SetVolume(float volumePercent, AudioChannel channel)
     {
-        audioSource.PlayOneShot(bulletCollision, .3f);
-    }
-   
-    public void PlayerProjectileAudio()
-    {
-        audioSource.PlayOneShot(playerProjectile, 0.1f);
+        switch (channel)
+        {
+            case AudioChannel.MASTER:
+                {
+                    masterVolumePercent = volumePercent;
+                    break;
+                }
+            case AudioChannel.MUSIC:
+                {
+                    musicVolumePercent = volumePercent;
+                    break;
+                }
+            case AudioChannel.SFX:
+                {
+                    sfxVolumePercent = volumePercent;
+                    break;
+                }
+        }
+        musicSource.volume = musicVolumePercent * masterVolumePercent;
+
+        PlayerPrefs.SetFloat("masterVolume", masterVolumePercent);
+        PlayerPrefs.SetFloat("musixVolume", musicVolumePercent);
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolumePercent);
+        PlayerPrefs.Save();
     }
 
-    public void PlayerDeathAudio()
+    public void PlayMusic(AudioClip clip)
     {
-        audioSource.PlayOneShot(playerDeath, 0.5f);
+        musicSource.PlayOneShot(clip, musicVolumePercent * masterVolumePercent);
+        musicSource.playOnAwake = true;
+        musicSource.loop = true;
     }
 
-    public void PlayerDamageAudio()
+    public void PlaySound(string soundName)
     {
-        audioSource.PlayOneShot(playerDamage, 0.8f);
-    }
-
-    public void EnemyProjectileAudio()
-    {
-        audioSource.PlayOneShot(enemyProjectile, 0.1f);
-    }
-
-    public void EnemyDeathAudio()
-    {
-        audioSource.PlayOneShot(enemyDeath, 0.6f);
-    }
-
-    public void EnemyDamageAudio()
-    {
-        audioSource.PlayOneShot(enemyDamage, 0.3f);
+        sfx2DSource.PlayOneShot(library.GetClipFromName(soundName), sfxVolumePercent * masterVolumePercent);
     }
 }

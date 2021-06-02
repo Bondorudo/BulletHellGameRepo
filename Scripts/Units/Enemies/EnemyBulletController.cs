@@ -10,8 +10,6 @@ public class EnemyBulletController : MonoBehaviour
     public float iFrameCounter;
     private float iFrames = 0f;
 
-    private AudioManager audioManager;
-
     private Vector2 moveDirection;
     [SerializeField] private Vector3 shootDir;
 
@@ -27,7 +25,6 @@ public class EnemyBulletController : MonoBehaviour
     {
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         gameType = gm.gameType;
-        audioManager = GameObject.FindWithTag("SFX").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -73,7 +70,7 @@ public class EnemyBulletController : MonoBehaviour
         // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
         if (other.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter <= iFrames)
         {
-            audioManager.BulletCollisionAudio();
+            AudioManager.instance.PlaySound("BulletCollision");
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
