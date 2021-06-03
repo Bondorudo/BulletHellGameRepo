@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundLibrary : MonoBehaviour
 {
     public SoundGroup[] soundGroups;
+    public float[] listOfVolumes;
 
     Dictionary<string, AudioClip[]> groupDictionary = new Dictionary<string, AudioClip[]>();
 
@@ -24,6 +25,12 @@ public class SoundLibrary : MonoBehaviour
             return sounds[Random.Range(0, sounds.Length)];
         }
         return null;
+    }
+
+    public float GetClipVolume()
+    {
+        float audioVolume = 1;
+        return audioVolume;
     }
 
     [System.Serializable]

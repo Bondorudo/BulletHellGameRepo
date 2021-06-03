@@ -16,6 +16,9 @@ public class EnemyBulletController : MonoBehaviour
     private GameManager gm;
     private GameTypes gameType;
 
+    [SerializeField] private ParticleSystem bulletColBr;
+    [SerializeField] private ParticleSystem bulletColPlayer;
+
     private void OnEnable()
     {
         Invoke("DisableBullet", 10f);
@@ -70,6 +73,10 @@ public class EnemyBulletController : MonoBehaviour
         // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
         if (other.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter <= iFrames)
         {
+            bulletColBr.Play();
+            bulletColPlayer.Play();
+            bulletColBr.transform.parent = null;
+            bulletColPlayer.transform.parent = null;
             AudioManager.instance.PlaySound("BulletCollision");
             Destroy(other.gameObject);
             Destroy(gameObject);

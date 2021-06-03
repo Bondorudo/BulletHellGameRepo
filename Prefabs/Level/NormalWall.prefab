@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7799106932577321652}
   - component: {fileID: 7799106932577321653}
   - component: {fileID: 7799106932577321650}
-  - component: {fileID: 957275778480806522}
+  - component: {fileID: 2122137214}
   m_Layer: 10
   m_Name: NormalWall
   m_TagString: Wall
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!208 &957275778480806522
+--- !u!208 &2122137214
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

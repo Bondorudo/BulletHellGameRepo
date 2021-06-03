@@ -5,6 +5,7 @@ using UnityEngine;
 public class TeleportScript : MonoBehaviour
 {
     [SerializeField] private int code;
+    [SerializeField] private ParticleSystem teleParticle;
     private float disableTimer = 0f;
 
     // Update is called once per frame
@@ -17,10 +18,13 @@ public class TeleportScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && disableTimer <= 0)
         {
-            foreach(TeleportScript tp in FindObjectsOfType<TeleportScript>())
+            AudioManager.instance.PlaySound("Teleporter");
+            teleParticle.Play();
+            foreach (TeleportScript tp in FindObjectsOfType<TeleportScript>())
             {
                 if (tp.code==code && tp != this)
                 {
+                    tp.teleParticle.Play();
                     tp.disableTimer = 1;
                     Vector3 position = tp.gameObject.transform.position;
                     position.y = 1;

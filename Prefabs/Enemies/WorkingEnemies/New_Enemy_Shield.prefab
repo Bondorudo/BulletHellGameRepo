@@ -289,7 +289,7 @@ MonoBehaviour:
   fieldOfViewAngle: 160
   losRadius: 45
   chaseRadius: 10
-  rotationSpeed: 20
+  rotationSpeed: 2
   distToPlayer: 1
 --- !u!54 &2001443014171835731
 Rigidbody:
@@ -429,7 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 1797300073745538198}
   rb: {fileID: 0}
-  audioManager: {fileID: 0}
   maxHealth: 3
   canTakeDamage: 0
 --- !u!54 &2001443014972078678
