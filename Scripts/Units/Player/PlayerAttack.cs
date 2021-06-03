@@ -7,11 +7,11 @@ public class PlayerAttack : MonoBehaviour
     private GameManager gm;
 
     [Header("Game Objects")]
-    [SerializeField] private GameObject playerBullet;
+    [SerializeField] private PlayerBulletController bullet;
     [SerializeField] private Transform firePoint;
 
     [Header("Bullet Attributes")]
-    [SerializeField] private float bulletCooldownDefault = 0.1f;
+    [SerializeField] private float timeBetweenBullets = 0.1f;
     private float bulletCooldown = 0;
     [SerializeField] private float bulletSpeed = 25;
     [SerializeField] private int bulletDamage = 1;
@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        bulletCooldown = timeBetweenBullets;
         // Get a reference to components
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -26,27 +27,29 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         // Increase shooting coolDown
-        bulletCooldown += Time.deltaTime;
-
-        // Call shoot function when left click is pressed or held
-        if (Input.GetMouseButton(0) && !gm.pauseGame)
+        if (bulletCooldown > 0) 
         {
-            Shoot();
+            bulletCooldown -= Time.deltaTime;
+        }
+
+        // can shoot if game isnt paused
+        if (!gm.pauseGame)
+        {
+            // Call shoot function when left click is pressed or held
+            if (Input.GetMouseButton(0) && bulletCooldown <= 0)
+            {
+                Shoot();
+                bulletCooldown = timeBetweenBullets;
+                AudioManager.instance.PlaySound("PlayerBullet");
+            }
         }
     }
 
     public void Shoot()
     {
-        if (bulletCooldown > bulletCooldownDefault)
-        {
-            // Create a player bullet as a playerBulletController then set bullet attributes, play audio and reset cooldown
-            Vector3 shootDir = (firePoint.position - this.gameObject.transform.position).normalized;
-            PlayerBulletController bullet = Instantiate(playerBullet, firePoint.position, firePoint.rotation).GetComponent<PlayerBulletController>();
-            bullet.SetUp(shootDir);
-            bullet.bulletSpeed = bulletSpeed;
-            bullet.damageToGive = bulletDamage;
-            AudioManager.instance.PlaySound("PlayerBullet");
-            bulletCooldown = 0;
-        }
+        // Create a player bullet as a playerBulletController then set bullet attributes, play audio and reset cooldown
+        PlayerBulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as PlayerBulletController;
+        newBullet.bulletSpeed = bulletSpeed;
+        newBullet.damageToGive = bulletDamage;
     }
 }

@@ -28,6 +28,8 @@ public class EnemyGun : MonoBehaviour
 
     private Vector3 shootDir;
 
+    private float startFireCooldown = 0.4f;
+
     private void Start()
     {
         // Initialize firePoint positions with arrays depending on how many firepoints should exist
@@ -45,6 +47,14 @@ public class EnemyGun : MonoBehaviour
         StartCoroutine(Shooting());
     }
 
+    private void Update()
+    {
+        if (startFireCooldown > 0)
+        {
+            startFireCooldown -= Time.deltaTime;
+        }
+    }
+
     IEnumerator Shooting()
     {
         while (this.isActiveAndEnabled)
@@ -57,31 +67,34 @@ public class EnemyGun : MonoBehaviour
 
     private void CreateFirePoints()
     {
-        if (firePointCount != 3)
+        if (startFireCooldown <= 0)
         {
-            for (int i = 0; i < firePointCount; i++)
+            if (firePointCount != 3)
             {
-                Vector3 position = new Vector3(firePointPos[i][0], firePointPos[i][1], firePointPos[i][2]);
-                GameObject newBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.Euler(0, firePointRot[i], 0));
-                newBullet.transform.SetParent(gameObject.transform);
-                newBullet.transform.localPosition = position;
-                newBullet.transform.parent = null;
-                shootDir = (newBullet.transform.position - this.gameObject.transform.position).normalized;
-                EnemyBulletController bulletStats = newBullet.gameObject.GetComponent<EnemyBulletController>();
-                bulletStats.SetUp(shootDir);
-                bulletStats.speed = bulletSpeed;
-                bulletStats.damageToGive = bulletDamage;
+                for (int i = 0; i < firePointCount; i++)
+                {
+                    Vector3 position = new Vector3(firePointPos[i][0], firePointPos[i][1], firePointPos[i][2]);
+                    GameObject newBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.Euler(0, firePointRot[i], 0));
+                    newBullet.transform.SetParent(gameObject.transform);
+                    newBullet.transform.localPosition = position;
+                    newBullet.transform.parent = null;
+                    shootDir = (newBullet.transform.position - this.gameObject.transform.position).normalized;
+                    EnemyBulletController bulletStats = newBullet.gameObject.GetComponent<EnemyBulletController>();
+                    bulletStats.SetUp(shootDir);
+                    bulletStats.speed = bulletSpeed;
+                    bulletStats.damageToGive = bulletDamage;
+                }
             }
-        }
-        else
-        {
-            for (int i = 0; i < firePointCount; i++)
+            else
             {
-                Vector3 position = new Vector3(firePointTrianglePos[i][0], firePointTrianglePos[i][1], firePointTrianglePos[i][2]);
+                for (int i = 0; i < firePointCount; i++)
+                {
+                    Vector3 position = new Vector3(firePointTrianglePos[i][0], firePointTrianglePos[i][1], firePointTrianglePos[i][2]);
 
-                GameObject firePoint = Instantiate(bullet, gameObject.transform.position, Quaternion.Euler(0, firePointTriangleRot[i], 0));
-                firePoint.transform.SetParent(gameObject.transform);
-                firePoint.transform.localPosition = position;
+                    GameObject firePoint = Instantiate(bullet, gameObject.transform.position, Quaternion.Euler(0, firePointTriangleRot[i], 0));
+                    firePoint.transform.SetParent(gameObject.transform);
+                    firePoint.transform.localPosition = position;
+                }
             }
         }
     }

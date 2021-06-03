@@ -5,7 +5,6 @@ using System;
 
 public class TopFirstPersonGameManager : MonoBehaviour
 {
-    private LevelHeart levelHeart;
     private AreAllEnemiesDead deadEnemies;
     private GameManager gm;
 
@@ -18,7 +17,6 @@ public class TopFirstPersonGameManager : MonoBehaviour
         checkIfCanTakeDamage = true;
         // Get a reference to components
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        levelHeart = GameObject.FindWithTag("LevelHeart").GetComponent<LevelHeart>();
         deadEnemies = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
 
@@ -34,8 +32,11 @@ public class TopFirstPersonGameManager : MonoBehaviour
         if (deadEnemies.AreEnemiesDead() && checkIfCanTakeDamage)
         {
             checkIfCanTakeDamage = false;
-            levelHeart.CanTakeDamage();
-            levelHeart.SetVulnerableColor();
+            foreach(LevelHeart heart in FindObjectsOfType<LevelHeart>())
+            {
+                heart.CanTakeDamage();
+                heart.SetVulnerableColor();
+            }
         }
     }
 

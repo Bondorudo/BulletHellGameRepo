@@ -10,8 +10,6 @@ public class AudioManager : MonoBehaviour
     public float musicVolumePercent { get; private set; }
     public float sfxVolumePercent { get; private set; }
 
-    int activeMusicSourceIndex;
-
     AudioSource sfx2DSource;
     AudioSource musicSource;
 
@@ -21,29 +19,21 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+        instance = this;
 
-            library = GetComponent<SoundLibrary>();
+        library = GetComponent<SoundLibrary>();
 
-            GameObject newMusicSource = new GameObject("Music Source");
-            musicSource = newMusicSource.AddComponent<AudioSource>();
-            newMusicSource.transform.parent = transform;
+        GameObject newMusicSource = new GameObject("Music Source");
+        musicSource = newMusicSource.AddComponent<AudioSource>();
+        newMusicSource.transform.parent = transform;
 
-            GameObject newSfx2DSource = new GameObject("2DsfxSource");
-            sfx2DSource = newSfx2DSource.AddComponent<AudioSource>();
-            newSfx2DSource.transform.parent = transform;
+        GameObject newSfx2DSource = new GameObject("2DsfxSource");
+        sfx2DSource = newSfx2DSource.AddComponent<AudioSource>();
+        newSfx2DSource.transform.parent = transform;
 
-            masterVolumePercent = PlayerPrefs.GetFloat("masterVolume", 1f);
-            musicVolumePercent = PlayerPrefs.GetFloat("musixVolume", 1f);
-            sfxVolumePercent = PlayerPrefs.GetFloat("sfxVolume", 1f);
-        }
+        masterVolumePercent = PlayerPrefs.GetFloat("masterVolume", 1f);
+        musicVolumePercent = PlayerPrefs.GetFloat("musixVolume", 1f);
+        sfxVolumePercent = PlayerPrefs.GetFloat("sfxVolume", 1f);
     }
 
     public void SetVolume(float volumePercent, AudioChannel channel)
@@ -76,9 +66,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        musicSource.PlayOneShot(clip, musicVolumePercent * masterVolumePercent);
+        //musicSource.PlayOneShot(clip, musicVolumePercent * masterVolumePercent);
+        musicSource.clip = clip;
+        musicSource.volume = musicVolumePercent * masterVolumePercent;
         musicSource.playOnAwake = true;
         musicSource.loop = true;
+        musicSource.Play(0);
     }
 
     public void PlaySound(string soundName)
