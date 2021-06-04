@@ -888,8 +888,8 @@ MonoBehaviour:
   pauseGame: 0
   isGameOver: 0
   victory: 0
-  nextLevelToLoad: Level_2
-  levelToUnlock: 2
+  nextLevelToLoad: 0
+  levelToUnlock: 0
 --- !u!114 &442910222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,7 +947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameType: 1
-  enemiesToBeKilled: 15
+  enemiesToBeKilled: 0
 --- !u!114 &442910225
 MonoBehaviour:
   m_ObjectHideFlags: 0

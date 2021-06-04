@@ -888,8 +888,8 @@ MonoBehaviour:
   pauseGame: 0
   isGameOver: 0
   victory: 0
-  nextLevelToLoad: Level_2
-  levelToUnlock: 2
+  nextLevelToLoad: Level_27
+  levelToUnlock: 27
 --- !u!114 &442910222
 MonoBehaviour:
   m_ObjectHideFlags: 0
