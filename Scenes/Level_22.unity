@@ -2480,11 +2480,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 0_Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3199468323603333092, guid: 1d97e73e73496704cb152e7003ada8b7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3199468323603333112, guid: 1d97e73e73496704cb152e7003ada8b7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -14426,11 +14421,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneFader
-      objectReference: {fileID: 0}
-    - target: {fileID: 3266200304015466422, guid: 4ffe1b74ea1fcd548a90a1defb7adee0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ffe1b74ea1fcd548a90a1defb7adee0, type: 3}
