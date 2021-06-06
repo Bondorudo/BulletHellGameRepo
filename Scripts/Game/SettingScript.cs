@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SettingScript : MonoBehaviour
 {
-    public Slider mouseSensitivitySlider;
     public Slider[] volumeSliders;
     public Toggle[] resolutionToggles;
     public Toggle fullScreenToggle;
@@ -87,10 +86,5 @@ public class SettingScript : MonoBehaviour
     public void SetSfxVolume(float value)
     {
         AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.SFX);
-    }
-
-    public void SetMouseSensitivity(float value)
-    {
-        //MouseLook.instance.SetMouseSensitivity(value);
     }
 }
