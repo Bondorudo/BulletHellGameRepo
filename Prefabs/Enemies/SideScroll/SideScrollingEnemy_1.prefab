@@ -152,9 +152,9 @@ MonoBehaviour:
   firePoint: {fileID: 6319833033154742167}
   startAngle: 135
   endAngleA: 225
-  BulletBreakable: {fileID: 4829330669069298905, guid: 726490f61d93b3e47943ec16a2fda9a5,
+  BulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
     type: 3}
-  BulletNonBreakable: {fileID: 5753433531923786704, guid: 33a381829c4a67042ad6441dd8ebe721,
+  BulletNonBreakable: {fileID: 5753433531923786704, guid: 29f27136a115a5d4091fd180b9bad5cd,
     type: 3}
   bulletType: 0
   fireRate: 1.5
