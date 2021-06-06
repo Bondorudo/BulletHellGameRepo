@@ -20,7 +20,7 @@ public class ButtonScript : MonoBehaviour
     public void UI_Continue_Button()
     {
         // if gametype is firstperson then lock cursor when continueing(??)
-        if (gm.gameType == GameTypes.FIRSTPERSON)
+        if (gm.gameType == GameTypes.FIRSTPERSON || gm.gameType == GameTypes.SIDESCROLL)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.lockState = CursorLockMode.Locked;

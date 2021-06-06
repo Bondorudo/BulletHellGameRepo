@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (gameType == GameTypes.FIRSTPERSON || gameType == GameTypes.SIDESCROLL)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         player = GameObject.FindWithTag("Player");
         mainCamera = Camera.main;
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();

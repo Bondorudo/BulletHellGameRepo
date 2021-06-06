@@ -178,10 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec069f7b4ef53d468280b7599cb4f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBullet: {fileID: 8703431556932724325, guid: d8e5764816fa17040bded2f366ffd07e,
-    type: 3}
+  bullet: {fileID: 8178104797548918795, guid: d8e5764816fa17040bded2f366ffd07e, type: 3}
   firePoint: {fileID: 1050501823772145176}
-  bulletCooldownDefault: 0.1
+  timeBetweenBullets: 0.1
   bulletSpeed: 25
   bulletDamage: 1
 --- !u!114 &5968129175493059749

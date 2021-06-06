@@ -970,6 +970,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5017115950032721325, guid: 21b94278064804f4487de52b677ad550,
+        type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: 1406af93e9de44b879499bb06a2a0579, type: 3}
     - target: {fileID: 5017115950032721326, guid: 21b94278064804f4487de52b677ad550,
         type: 3}
       propertyPath: m_Name
@@ -1849,6 +1854,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5314482113080686934, guid: 1d97e73e73496704cb152e7003ada8b7,
+        type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 1906348561}
     - target: {fileID: 5735873448987926513, guid: 1d97e73e73496704cb152e7003ada8b7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2258,6 +2268,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ffe1b74ea1fcd548a90a1defb7adee0, type: 3}
+--- !u!1 &1119821576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3199468323603333092, guid: 1d97e73e73496704cb152e7003ada8b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 794415146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247624499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,6 +2728,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSettingsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3826382366924796756, guid: ac597cb2309b49d49a6f9a3aa28c332b,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1119821576}
     - target: {fileID: 3826382366924796757, guid: ac597cb2309b49d49a6f9a3aa28c332b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2819,6 +2840,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac597cb2309b49d49a6f9a3aa28c332b, type: 3}
+--- !u!1 &1906348561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3826382366924796753, guid: ac597cb2309b49d49a6f9a3aa28c332b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1906348560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1943576256
 GameObject:
   m_ObjectHideFlags: 0
