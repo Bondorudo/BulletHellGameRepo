@@ -3094,7 +3094,7 @@ MonoBehaviour:
   pauseGame: 0
   isGameOver: 0
   victory: 0
-  nextLevelToLoad: MainMenu
+  nextLevelToLoad: y_EndCredits
   levelToUnlock: 31
 --- !u!114 &442910222
 MonoBehaviour:

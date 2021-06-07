@@ -6,11 +6,24 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject settingsMenu;
     public GameObject mainMenu;
+    public GameObject newGameButton;
+    public GameObject continueButton;
 
     private void Start()
     {
         // Set time scale to 1 just incase.
         Time.timeScale = 1;
+
+        if (PlayerPrefs.GetInt("levelReached") > 1)
+        {
+            newGameButton.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            newGameButton.gameObject.SetActive(true);
+            continueButton.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
