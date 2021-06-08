@@ -493,7 +493,7 @@ PrefabInstance:
     - target: {fileID: 4882019140086853614, guid: 846e812e63da5d34383019e639f28201,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4882019140086853614, guid: 846e812e63da5d34383019e639f28201,
         type: 3}
@@ -745,6 +745,7 @@ MonoBehaviour:
   restartButton: {fileID: 794415149}
   settingsButton: {fileID: 794415148}
   saveAndQuitButton: {fileID: 794415147}
+  levelNumberText: {fileID: 0}
   scoreText: {fileID: 673826363}
   highScoreText: {fileID: 2125815924}
 --- !u!114 &442910223
@@ -1342,7 +1343,7 @@ PrefabInstance:
     - target: {fileID: 4882019140086853614, guid: 846e812e63da5d34383019e639f28201,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4882019140086853614, guid: 846e812e63da5d34383019e639f28201,
         type: 3}
