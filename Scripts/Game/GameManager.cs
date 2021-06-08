@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         victory = false;
         score = 0;
         scoreToShow = 0;
-        countDownTime = 3;
+        countDownTime = 3f;
         StartCoroutine(DecreaseTimer());
     }
 
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
                 showTimer = (int)Math.Round(countDownTime);
                 uiScript.SetVictoryUI((int)showTimer);
                 countDownTime--;
-                yield return new WaitForSecondsRealtime(0.8f);
+                yield return new WaitForSecondsRealtime(0.7f);
             }
             LoadNextLevel();
             yield return null;

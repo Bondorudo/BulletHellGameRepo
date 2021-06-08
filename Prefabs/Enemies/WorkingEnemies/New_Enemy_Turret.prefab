@@ -48,7 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 2722615806281535251}
   rb: {fileID: 0}
-  audioManager: {fileID: 0}
   maxHealth: 3
   canTakeDamage: 0
   rotateClockwise: 1
@@ -131,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2810082970152711334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 6}
+  m_LocalPosition: {x: 1, y: 1, z: 1}
   m_LocalScale: {x: 0.8, y: 0.4, z: 0.8}
   m_Children:
   - {fileID: 2810082969514825661}

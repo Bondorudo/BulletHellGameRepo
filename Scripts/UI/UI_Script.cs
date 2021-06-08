@@ -21,7 +21,7 @@ public class UI_Script : MonoBehaviour
     public Button saveAndQuitButton;
 
     [Header("UI Text")]
-    public TextMeshProUGUI enemiesKilledText;
+    public TextMeshProUGUI levelNumberText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
 

@@ -1108,7 +1108,7 @@ MonoBehaviour:
   restartButton: {fileID: 772520189}
   settingsButton: {fileID: 1513405322}
   saveAndQuitButton: {fileID: 1219615901}
-  enemiesKilledText: {fileID: 0}
+  levelNumberText: {fileID: 0}
   scoreText: {fileID: 0}
   highScoreText: {fileID: 0}
 --- !u!114 &442910223

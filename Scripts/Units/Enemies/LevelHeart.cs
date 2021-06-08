@@ -6,7 +6,8 @@ public class LevelHeart : Enemy
 {
     private Renderer rend;
 
-    private Color storedColor;
+    private Color vulnerableColor;
+    [SerializeField] private Color shieldedColor;
 
 
     // Start is called before the first frame update
@@ -14,7 +15,7 @@ public class LevelHeart : Enemy
     {
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
-        storedColor = rend.material.GetColor("_Color");
+        vulnerableColor = rend.material.GetColor("_Color");
         canTakeDamage = false;
         SetShieldedColor();
     }
@@ -33,6 +34,6 @@ public class LevelHeart : Enemy
 
     public void SetVulnerableColor()
     {
-        rend.material.SetColor("_Color", storedColor);
+        rend.material.SetColor("_Color", vulnerableColor);
     }
 }

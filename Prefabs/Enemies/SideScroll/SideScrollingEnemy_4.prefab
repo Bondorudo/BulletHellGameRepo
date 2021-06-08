@@ -157,7 +157,7 @@ MonoBehaviour:
   BulletNonBreakable: {fileID: 5753433531923786704, guid: 29f27136a115a5d4091fd180b9bad5cd,
     type: 3}
   bulletType: 0
-  fireRate: 0.6
+  fireRate: 1
   bulletsAmount: 0
   bulletDamage: 1
   bulletSpeed: 15

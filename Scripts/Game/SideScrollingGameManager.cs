@@ -33,14 +33,12 @@ public class SideScrollingGameManager : MonoBehaviour
         // Set up level and UI based on if scene is in story or arcade mode;
         if (gameType == GameType.STORY)
         {
-            uiScript.enemiesKilledText.gameObject.SetActive(true);
             uiScript.scoreText.gameObject.SetActive(false);
             enemiesKilled = 0;
             isBossDead = false;
         }
         else if (gameType == GameType.ARCADE)
         {
-            uiScript.enemiesKilledText.gameObject.SetActive(false);
             uiScript.scoreText.gameObject.SetActive(true);
         }
     }
@@ -55,8 +53,8 @@ public class SideScrollingGameManager : MonoBehaviour
             {
                 enemiesKilled = enemiesToBeKilled;
             }
-            // Update UI
-            uiScript.enemiesKilledText.text = "Enemies Killed " + enemiesKilled + "/" + enemiesToBeKilled;
+
+            // Set enemies killed to amount of enemies killed
             enemiesKilled = areAllEnemiesDead.enemiesKilled;
 
             // Once all enemies in level are dead spawn a boss

@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 2961432759926727829}
-  flashLength: 0.3
+  flashLength: 0.6
   currentHealth: 0
 --- !u!54 &8104378074284377167
 Rigidbody:
