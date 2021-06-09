@@ -8,48 +8,38 @@ public class UndyneEnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
 
     int enemyIndex;
-    int enemiesInWave;
+    int multiplier = 0;
 
-    int thisNumber;
+    [SerializeField] private float timeBeforeActivationSet;
 
-    int[] randomNumbers = new int[4];
+    [Range(0,4)]
+    [SerializeField] private int spawnPos = 0;
 
-    Vector3[] spawnPosArr = new Vector3[3];
+    Vector3[] spawnPosArr = new Vector3[4];
 
-    private void Start()
+    private void Awake()
     {
+        multiplier = 0;
         // Initialize possible enemy positions with arrays depending on how many enemies are spawned
-
-        spawnPosArr[0] = new Vector3(0, 1, 6);
-        spawnPosArr[1] = new Vector3(6, 1, 0);
-        spawnPosArr[2] = new Vector3(0, 1, -6);
-        spawnPosArr[3] = new Vector3(-6, 1, 0);
+        spawnPosArr[0] = new Vector3(0f, 1f, 6f);
+        spawnPosArr[1] = new Vector3(6f, 1f, 0f);
+        spawnPosArr[2] = new Vector3(0f, 1f, -6f);
+        spawnPosArr[3] = new Vector3(-6f, 1f, 0f);
     }
 
     public void SpawnEnemyWave()
     {
-        /*
-        List<int> numbers = new List<int>(4);
-        for (int i = 0; i < 121; i++)
-        {
-            numbers.Add(i);
-        }
-        for (int i = 0; i < randomNumbers.Length; i++)
-        {
-            thisNumber = Random.Range(0, numbers.Count);
-            randomNumbers[i] = numbers[thisNumber];
-            numbers.RemoveAt(thisNumber);
-        }
-        */
-        enemiesInWave = Random.Range(1, 5);
-
         // Loop trought enemies in wave and spawn an enemy for every enemy in wave
-        for (int i = 0; i <= 4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            // new random Vector3 for spawn position
-            int randomIndex = Random.Range(0, 4);
-
-            Instantiate(enemyPrefab, spawnPosArr[randomIndex], enemyPrefab.transform.rotation);
+            multiplier++;
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosArr[spawnPos], enemyPrefab.transform.rotation) as GameObject;
+            enemy.GetComponent<EnemyUndyne>().timeBeforeActivationSet += multiplier * (int)1.25f;
+            spawnPos++;
+            if (spawnPos >= 4)
+            {
+                spawnPos = 0;
+            }
         }
     }
 

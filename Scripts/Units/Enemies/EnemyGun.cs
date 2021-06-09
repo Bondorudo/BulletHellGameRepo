@@ -10,6 +10,9 @@ public class EnemyGun : MonoBehaviour
     private float[][] firePointTrianglePos = new float[3][];
     private int[] firePointTriangleRot = new int[3] { 180, -58, 58 };
 
+    [Header("CAN SHOOT")]
+    public bool canShoot = true;
+
     [Header("FIREPOINTS")]
     [Range(1, 4)]
     [SerializeField] private int firePointCount;
@@ -29,6 +32,11 @@ public class EnemyGun : MonoBehaviour
     private Vector3 shootDir;
 
     private float startFireCooldown = 0.4f;
+
+    private void Awake()
+    {
+        canShoot = true;
+    }
 
     private void Start()
     {
@@ -59,9 +67,13 @@ public class EnemyGun : MonoBehaviour
     {
         while (this.isActiveAndEnabled)
         {
-            CreateFirePoints();
-            AudioManager.instance.PlaySound("EnemyBullet");
-            yield return new WaitForSeconds(fireRate);
+            while (canShoot)
+            {
+                CreateFirePoints();
+                AudioManager.instance.PlaySound("EnemyBullet");
+                yield return new WaitForSeconds(fireRate);
+            }
+            yield return null;
         }
     }
 

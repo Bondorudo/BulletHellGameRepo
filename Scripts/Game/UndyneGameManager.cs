@@ -97,6 +97,7 @@ public class UndyneGameManager : MonoBehaviour
             {
                 // Spawn a wave of enemies
                 enemySpawner.SpawnEnemyWave();
+                
                 // Add all objects with SideScrollEnemy tag to list;
                 areAllEnemiesDead.listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("UndyneEnemy"));
             }

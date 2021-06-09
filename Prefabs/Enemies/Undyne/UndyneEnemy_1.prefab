@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  timeBeforeActivationSet: 0.2
 --- !u!114 &8252787000998073503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 8192062261882381236}
   rb: {fileID: 0}
-  maxHealth: 3
+  maxHealth: 9
   canTakeDamage: 0
 --- !u!114 &8252787000998073501
 MonoBehaviour:
@@ -129,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a993de7b8abaa4a877a7df71c6bfe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canShoot: 1
   firePointCount: 1
   bulletType: 1
-  fireRate: 1
-  bulletSpeed: 10
+  fireRate: 1.5
+  bulletSpeed: 5
   alternateSpeed: 0
   BulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
     type: 3}
