@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum GameTypes { SIDESCROLL, TOPDOWN, FIRSTPERSON }
+public enum GameTypes { SIDESCROLL, TOPDOWN, FIRSTPERSON, UNDYNE }
 
 public class GameManager : MonoBehaviour
 {
