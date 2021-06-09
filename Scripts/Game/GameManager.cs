@@ -103,7 +103,15 @@ public class GameManager : MonoBehaviour
         {
             score += Time.deltaTime;
             scoreToShow = (float)Math.Round(score, 2);
-            uiScript.scoreText.text = "Score " + scoreToShow;
+            if (gameType == GameTypes.SIDESCROLL)
+            {
+
+                uiScript.scoreText.text = "Score " + scoreToShow;
+            }
+            else if (gameType == GameTypes.UNDYNE)
+            {
+                uiScript.scoreText.text = "Score" + "\n" + scoreToShow;
+            }
         }
     }
 

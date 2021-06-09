@@ -36,7 +36,7 @@ public class EnemyBulletController : MonoBehaviour
         {
             transform.Translate(moveDirection * speed * Time.deltaTime);
         }
-        else if (gameType == GameTypes.TOPDOWN || gameType == GameTypes.FIRSTPERSON)
+        else
         {
             transform.position += shootDir * speed * Time.deltaTime;
         }
