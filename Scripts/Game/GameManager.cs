@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private float scoreToShow;
     private float countDownTime;
     private float showTimer;
+    private float lerpDuration = 0.8f;
+    private float levelTextDuration = 1.5f;
 
     public bool pauseGame;
     public bool isGameOver;
@@ -33,18 +35,21 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.lockState = CursorLockMode.Locked;
         }
-
         player = GameObject.FindWithTag("Player");
         mainCamera = Camera.main;
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         player.SetActive(true);
-        pauseGame = false;
+        pauseGame = true;
         isGameOver = false;
         victory = false;
         score = 0;
         scoreToShow = 0;
         countDownTime = 3f;
+        uiScript.levelNumberText.gameObject.SetActive(true);
+        uiScript.levelNumberText.text = (levelToUnlock - 1).ToString();
+
         StartCoroutine(DecreaseTimer());
+        StartCoroutine(ShowLevelNumber());
     }
 
     void Update()
@@ -52,11 +57,30 @@ public class GameManager : MonoBehaviour
         PauseGame();
     }
 
+    IEnumerator ShowLevelNumber()
+    {
+        yield return new WaitForSecondsRealtime(levelTextDuration);
+
+        float endValue = 0;
+        float elapsedTime = 0;
+        float startValue = uiScript.levelNumberText.color.a;
+
+        while (elapsedTime < lerpDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float newAlpha = Mathf.Lerp(startValue, endValue, elapsedTime / lerpDuration);
+            uiScript.levelNumberText.color = new Color(uiScript.levelNumberText.color.r, uiScript.levelNumberText.color.g, uiScript.levelNumberText.color.b, newAlpha);
+            yield return null;
+        }
+        uiScript.levelNumberText.gameObject.SetActive(false);
+        pauseGame = false;
+    }
+
     public void PauseGame()
     {
         if (!isGameOver || !victory)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E) && !pauseGame)
             {
                 pauseGame = true;
                 uiScript.SetPauseUI();

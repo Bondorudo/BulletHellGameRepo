@@ -1258,7 +1258,7 @@ MonoBehaviour:
   restartButton: {fileID: 961102512}
   settingsButton: {fileID: 961102511}
   saveAndQuitButton: {fileID: 961102510}
-  levelNumberText: {fileID: 0}
+  levelNumberText: {fileID: 961102518}
   scoreText: {fileID: 0}
   highScoreText: {fileID: 0}
 --- !u!114 &442910223
@@ -1950,31 +1950,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5017115950032721322, guid: 21b94278064804f4487de52b677ad550,
-        type: 3}
-      propertyPath: soundGroups.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5017115950032721322, guid: 21b94278064804f4487de52b677ad550,
-        type: 3}
-      propertyPath: soundGroups.Array.data[9].GroupID
-      value: ShieldedEnemyHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 5017115950032721322, guid: 21b94278064804f4487de52b677ad550,
-        type: 3}
-      propertyPath: soundGroups.Array.data[9].group.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5017115950032721322, guid: 21b94278064804f4487de52b677ad550,
-        type: 3}
-      propertyPath: soundGroups.Array.data[9].group.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 15faccb8f5420432fa284037f4bf1faa, type: 3}
-    - target: {fileID: 5017115950032721325, guid: 21b94278064804f4487de52b677ad550,
-        type: 3}
-      propertyPath: music
-      value: 
-      objectReference: {fileID: 8300000, guid: ac28fa91e56541946a6ed2fd76616c51, type: 3}
     - target: {fileID: 5017115950032721326, guid: 21b94278064804f4487de52b677ad550,
         type: 3}
       propertyPath: m_Name
@@ -2620,16 +2595,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3977545425883549644, guid: 1d97e73e73496704cb152e7003ada8b7,
-        type: 3}
-      propertyPath: settings
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977545425883549644, guid: 1d97e73e73496704cb152e7003ada8b7,
-        type: 3}
-      propertyPath: pauseMenu
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5314482113080686934, guid: 1d97e73e73496704cb152e7003ada8b7,
         type: 3}
       propertyPath: settings
@@ -2727,6 +2692,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 961102509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &961102518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6757813283131323671, guid: 1d97e73e73496704cb152e7003ada8b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 961102509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &979442025
 PrefabInstance:
   m_ObjectHideFlags: 0

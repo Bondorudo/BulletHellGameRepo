@@ -34,7 +34,6 @@ public class TopFirstPersonGameManager : MonoBehaviour
             checkIfCanTakeDamage = false;
             foreach(LevelHeart heart in FindObjectsOfType<LevelHeart>())
             {
-                heart.CanTakeDamage();
                 heart.SetVulnerableColor();
             }
         }

@@ -2410,6 +2410,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 308925557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &308925559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6757813283131323671, guid: 1d97e73e73496704cb152e7003ada8b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 308925557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &322436043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3299,6 +3311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameType: 1
   score: 0
+  lerpDuration: 3
   pauseGame: 0
   isGameOver: 0
   victory: 0
@@ -3323,7 +3336,7 @@ MonoBehaviour:
   restartButton: {fileID: 1946390760}
   settingsButton: {fileID: 701182242}
   saveAndQuitButton: {fileID: 1175611620}
-  enemiesKilledText: {fileID: 0}
+  levelNumberText: {fileID: 308925559}
   scoreText: {fileID: 0}
   highScoreText: {fileID: 0}
 --- !u!114 &442910223

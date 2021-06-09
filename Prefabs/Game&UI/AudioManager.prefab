@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45575007e4cce594f82d863462091daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 8300000, guid: 3ae6e03c962bd4391a7acebf039583f0, type: 3}
+  music: {fileID: 8300000, guid: ac28fa91e56541946a6ed2fd76616c51, type: 3}
 --- !u!114 &5017115950032721322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,4 +98,7 @@ MonoBehaviour:
   - GroupID: Teleporter
     group:
     - {fileID: 8300000, guid: 4b133cb5b228441c6b5661e5f8c9bf91, type: 3}
+  - GroupID: ShieldedEnemyHit
+    group:
+    - {fileID: 8300000, guid: b30abfff4b00a4f8f9037473d8dbf895, type: 3}
   listOfVolumes: []

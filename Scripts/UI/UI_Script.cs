@@ -31,6 +31,7 @@ public class UI_Script : MonoBehaviour
     {
         pauseText.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
         settingsButton.gameObject.SetActive(true);
         saveAndQuitButton.gameObject.SetActive(true);
     }

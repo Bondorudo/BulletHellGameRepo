@@ -16,24 +16,19 @@ public class LevelHeart : Enemy
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         vulnerableColor = rend.material.GetColor("_Color");
-        canTakeDamage = false;
         SetShieldedColor();
-    }
-
-    // Set can take damage to true
-    public void CanTakeDamage()
-    {
-        canTakeDamage = true;
     }
 
     // Sets color to indicate if heart can take damage
     public void SetShieldedColor()
     {
         rend.material.SetColor("_Color", Color.gray);
+        canTakeDamage = false;
     }
 
     public void SetVulnerableColor()
     {
         rend.material.SetColor("_Color", vulnerableColor);
+        canTakeDamage = true;
     }
 }

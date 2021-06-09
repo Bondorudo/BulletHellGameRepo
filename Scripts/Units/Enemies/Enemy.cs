@@ -85,10 +85,16 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PlayerBullet")
+        if (other.gameObject.tag == "PlayerBullet" && canTakeDamage)
         {
             Destroy(other.gameObject);
             HurtEnemy(other.gameObject.GetComponent<PlayerBulletController>().damageToGive);
+        }
+
+        if (other.gameObject.tag == "PlayerBullet" && !canTakeDamage)
+        {
+            Destroy(other.gameObject);
+            AudioManager.instance.PlaySound("ShieldedEnemyHit");
         }
     }
 }

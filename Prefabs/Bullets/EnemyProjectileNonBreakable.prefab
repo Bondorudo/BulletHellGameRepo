@@ -96,7 +96,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.45
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2214377612646186495
 Rigidbody:
@@ -129,5 +129,6 @@ MonoBehaviour:
   speed: 0
   damageToGive: 0
   iFrameCounter: 0
-  moveDirection: {x: 0, y: 0}
-  gameType: 0
+  shootDir: {x: 0, y: 0, z: 0}
+  bulletColBr: {fileID: 0}
+  bulletColPlayer: {fileID: 0}
