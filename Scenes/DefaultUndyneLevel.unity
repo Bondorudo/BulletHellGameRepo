@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e828fa441e75e240bc0eff8f3e0bddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameType: 1
+  gameType: 0
   enemiesToBeKilled: 20
 --- !u!114 &442910225
 MonoBehaviour:
@@ -1601,6 +1601,7 @@ MonoBehaviour:
     type: 3}
   timeBeforeActivationSet: 2
   spawnPos: 0
+  amountOfEnemies: 4
 --- !u!1001 &472793558
 PrefabInstance:
   m_ObjectHideFlags: 0

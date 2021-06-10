@@ -16,6 +16,7 @@ public class UndyneGameManager : MonoBehaviour
     public int enemiesToBeKilled = 20;
 
     private bool isBossDead;
+    bool canSpawnWave;
 
 
     // Start is called before the first frame update
@@ -25,7 +26,6 @@ public class UndyneGameManager : MonoBehaviour
         enemySpawner = GameObject.FindWithTag("GameManager").GetComponent<UndyneEnemySpawner>();
         areAllEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
-        StartCoroutine(SpawnEnemies());
 
         // Set up level and UI based on if scene is in story or arcade mode;
         if (gameType == GameType.STORY)
@@ -84,25 +84,35 @@ public class UndyneGameManager : MonoBehaviour
                 uiScript.highScoreText.text = "High Score " + scoreToShow;
             }
         }
+        SpawnEnemies();
     }
 
     // Spawns enemies everytime a wave has been killed until enemy limit has been reached
-    IEnumerator SpawnEnemies()
+    private void SpawnEnemies()
     {
+
         // Do this while enemies killed is less than win condition
-        while (enemiesKilled < enemiesToBeKilled)
+        if (enemiesKilled < enemiesToBeKilled)
         {
             // Spawn enemies when there are no enemies in the scene
-            while (areAllEnemiesDead.listOfEnemies.Count <= 0)
+            if (areAllEnemiesDead.listOfEnemies.Count <= 0)
             {
-                // Spawn a wave of enemies
-                enemySpawner.SpawnEnemyWave();
+                canSpawnWave = true;
+                if (canSpawnWave)
+                {
+                    // Spawn a wave of enemies
+                    StartCoroutine(enemySpawner.SpawnEnemyWave());
+                    
+                    canSpawnWave = false;
+                }
                 
                 // Add all objects with SideScrollEnemy tag to list;
                 areAllEnemiesDead.listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("UndyneEnemy"));
             }
-            yield return new WaitForSeconds(1f);
+            if (areAllEnemiesDead.listOfEnemies.Count >= enemySpawner.amountOfEnemies)
+            {
+                StopCoroutine(enemySpawner.SpawnEnemyWave());
+            }
         }
-        yield return new WaitForSeconds(1f);
     }
 }

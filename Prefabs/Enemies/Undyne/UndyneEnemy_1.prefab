@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  timeBeforeActivationSet: 0.2
+  timeBeforeActivationSet: 0
 --- !u!114 &8252787000998073503
 MonoBehaviour:
   m_ObjectHideFlags: 0

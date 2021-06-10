@@ -30,9 +30,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+
         if (gameType == GameTypes.FIRSTPERSON || gameType == GameTypes.SIDESCROLL)
         {
-            Cursor.lockState = CursorLockMode.Confined;
             Cursor.lockState = CursorLockMode.Locked;
         }
         player = GameObject.FindWithTag("Player");
