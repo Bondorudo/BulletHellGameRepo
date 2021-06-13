@@ -16,7 +16,6 @@ public class UndyneGameManager : MonoBehaviour
     public int enemiesToBeKilled = 20;
 
     private bool isBossDead;
-    bool canSpawnWave;
 
 
     // Start is called before the first frame update
@@ -38,6 +37,7 @@ public class UndyneGameManager : MonoBehaviour
         {
             uiScript.scoreText.gameObject.SetActive(true);
         }
+        StartCoroutine(SpawnEnemies());
     }
 
     void Update()
@@ -84,35 +84,26 @@ public class UndyneGameManager : MonoBehaviour
                 uiScript.highScoreText.text = "High Score " + scoreToShow;
             }
         }
-        SpawnEnemies();
     }
 
     // Spawns enemies everytime a wave has been killed until enemy limit has been reached
-    private void SpawnEnemies()
+    IEnumerator SpawnEnemies()
     {
 
         // Do this while enemies killed is less than win condition
-        if (enemiesKilled < enemiesToBeKilled)
+        while (enemiesKilled < enemiesToBeKilled)
         {
             // Spawn enemies when there are no enemies in the scene
-            if (areAllEnemiesDead.listOfEnemies.Count <= 0)
+            while (areAllEnemiesDead.listOfEnemies.Count <= enemySpawner.amountOfEnemies)
             {
-                canSpawnWave = true;
-                if (canSpawnWave)
-                {
-                    // Spawn a wave of enemies
-                    StartCoroutine(enemySpawner.SpawnEnemyWave());
-                    
-                    canSpawnWave = false;
-                }
-                
-                // Add all objects with SideScrollEnemy tag to list;
-                areAllEnemiesDead.listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("UndyneEnemy"));
+                // Spawn a wave of enemies
+                enemySpawner.SpawnEnemyWave();
+
+                Debug.Log(areAllEnemiesDead.listOfEnemies.Count);
+
+                yield return new WaitForSecondsRealtime(1);
             }
-            if (areAllEnemiesDead.listOfEnemies.Count >= enemySpawner.amountOfEnemies)
-            {
-                StopCoroutine(enemySpawner.SpawnEnemyWave());
-            }
+            yield return null;
         }
     }
 }

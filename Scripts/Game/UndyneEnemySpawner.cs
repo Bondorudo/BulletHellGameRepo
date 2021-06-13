@@ -6,12 +6,13 @@ public class UndyneEnemySpawner : MonoBehaviour
 {
     public List<GameObject> enemyPrefabs = new List<GameObject>();
     public GameObject enemyPrefab;
+    private AreAllEnemiesDead areAllEnemiesDead;
 
     int enemyIndex;
-    int multiplier = 0;
 
     [SerializeField] private float timeBeforeActivationSet;
 
+    //TODO: Spawn pos lista jota järjestelemällä voi muuttaa spawn järjestystä
     [Range(0,3)]
     [SerializeField] private int spawnPos = 0;
     [Range(0, 4)]
@@ -20,28 +21,25 @@ public class UndyneEnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        multiplier = 0;
         // Initialize possible enemy positions with arrays depending on how many enemies are spawned
         spawnPosArr[0] = new Vector3(0f, 1f, 6f);
         spawnPosArr[1] = new Vector3(0f, 1f, -6f);
         spawnPosArr[2] = new Vector3(6f, 1f, 0f);
         spawnPosArr[3] = new Vector3(-6f, 1f, 0f);
+        areAllEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
 
-    public IEnumerator SpawnEnemyWave()
+    public void SpawnEnemyWave()
     {
-        // Loop trought enemies in wave and spawn an enemy for every enemy in wave
-        for (int i = 0; i < amountOfEnemies; i++)
+        GameObject enemy = Instantiate(enemyPrefab, spawnPosArr[spawnPos], enemyPrefab.transform.rotation) as GameObject;
+
+        // Add enemy to list
+        areAllEnemiesDead.listOfEnemies.Add(enemy);
+
+        spawnPos++;
+        if (spawnPos >= 4)
         {
-            multiplier++;
-            GameObject enemy = Instantiate(enemyPrefab, spawnPosArr[spawnPos], enemyPrefab.transform.rotation) as GameObject;
-            //enemy.GetComponent<EnemyUndyne>().timeBeforeActivationSet += multiplier * (int)1.25f;
-            spawnPos++;
-            if (spawnPos >= 4)
-            {
-                spawnPos = 0;
-            }
-            yield return new WaitForSecondsRealtime(1);
+            spawnPos = 0;
         }
     }
 
